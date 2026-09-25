@@ -1,27 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>AIHustleUp — Build. Create. Hustle.</title>
-
-<meta name="description" content="AIHustleUp builds modern websites, creative content and digital experiences for ambitious businesses.">
-
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<title>AIHUSTLEUP — Digital Creative Agency</title>
 
 <style>
-
-/* =========================================================
-   RESET
-========================================================= */
-
 *{
     margin:0;
     padding:0;
@@ -33,147 +17,114 @@ html{
 }
 
 body{
-    font-family:"Inter",sans-serif;
-    background:#050505;
+    background:#050507;
     color:#fff;
+    font-family:Inter,Arial,sans-serif;
     overflow-x:hidden;
 }
 
 a{
-    text-decoration:none;
     color:inherit;
+    text-decoration:none;
 }
 
-button{
-    font-family:inherit;
-}
+/* =========================
+   LOADER
+========================= */
 
-/* =========================================================
-   BACKGROUND
-========================================================= */
-
-body::before{
-    content:"";
-    position:fixed;
-    width:650px;
-    height:650px;
-    left:-300px;
-    top:-300px;
-    background:#7c3cff;
-    filter:blur(180px);
-    opacity:.17;
-    pointer-events:none;
-    z-index:-5;
-}
-
-body::after{
-    content:"";
-    position:fixed;
-    width:500px;
-    height:500px;
-    right:-250px;
-    top:35%;
-    background:#00c6ff;
-    filter:blur(180px);
-    opacity:.10;
-    pointer-events:none;
-    z-index:-5;
-}
-
-.noise{
+.loader{
     position:fixed;
     inset:0;
-    pointer-events:none;
-    opacity:.035;
-    z-index:999;
-    background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.8'/%3E%3C/svg%3E");
-}
-
-/* =========================================================
-   CUSTOM CURSOR
-========================================================= */
-
-.cursor{
-    width:12px;
-    height:12px;
-    border-radius:50%;
-    position:fixed;
-    background:#fff;
-    pointer-events:none;
-    z-index:10000;
-    transform:translate(-50%,-50%);
-    mix-blend-mode:difference;
-}
-
-.cursor-ring{
-    width:40px;
-    height:40px;
-    border:1px solid rgba(255,255,255,.55);
-    border-radius:50%;
-    position:fixed;
-    pointer-events:none;
     z-index:9999;
-    transform:translate(-50%,-50%);
-    transition:width .2s,height .2s;
+    background:#050507;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    transition:opacity 1s ease,visibility 1s ease;
 }
 
-/* =========================================================
-   NAVIGATION
-========================================================= */
-
-.nav-wrap{
-    position:fixed;
-    top:18px;
-    left:0;
-    width:100%;
-    z-index:500;
+.loader.hide{
+    opacity:0;
+    visibility:hidden;
 }
 
-nav{
-    width:min(1180px,92%);
-    margin:auto;
-    height:68px;
-    padding:0 22px;
+.loader-inner{
+    text-align:center;
+}
+
+.loader-logo{
+    font-size:38px;
+    font-weight:900;
+    letter-spacing:-3px;
+}
+
+.loader-bar{
+    width:180px;
+    height:2px;
+    background:#222;
+    margin:25px auto;
+    overflow:hidden;
+}
+
+.loader-bar span{
+    display:block;
+    width:0%;
+    height:100%;
+    background:white;
+    animation:load 2s forwards;
+}
+
+@keyframes load{
+    to{
+        width:100%;
+    }
+}
+
+/* =========================
+   NAV
+========================= */
+
+.nav{
+    position:absolute;
+    z-index:20;
+    top:22px;
+    left:4%;
+    right:4%;
+    height:64px;
 
     display:flex;
     align-items:center;
     justify-content:space-between;
 
-    border:1px solid rgba(255,255,255,.10);
+    padding:0 20px;
+
+    border:1px solid rgba(255,255,255,.12);
     border-radius:20px;
 
-    background:rgba(10,10,10,.55);
+    background:rgba(8,8,12,.55);
     backdrop-filter:blur(20px);
-    -webkit-backdrop-filter:blur(20px);
-
-    box-shadow:
-        0 15px 50px rgba(0,0,0,.25),
-        inset 0 1px 0 rgba(255,255,255,.05);
 }
 
 .logo{
-    font-size:20px;
-    font-weight:900;
-    letter-spacing:-1px;
+    font-size:21px;
+    font-weight:950;
+    letter-spacing:-1.5px;
 }
 
 .logo span{
-    background:linear-gradient(90deg,#a66cff,#5ac8ff);
-    -webkit-background-clip:text;
-    color:transparent;
+    color:#777;
 }
 
 .nav-links{
     display:flex;
     gap:30px;
-    align-items:center;
+    font-size:11px;
+    letter-spacing:2px;
+    color:#999;
 }
 
 .nav-links a{
-    color:#999;
-    font-size:13px;
-    font-weight:600;
-    transition:.25s;
+    transition:.3s;
 }
 
 .nav-links a:hover{
@@ -181,461 +132,171 @@ nav{
 }
 
 .nav-button{
-    padding:11px 17px;
+    padding:11px 16px;
     border-radius:12px;
     background:#fff;
-    color:#000 !important;
+    color:#050507;
+    font-size:11px;
+    font-weight:900;
 }
 
-/* =========================================================
+/* =========================
    HERO
-========================================================= */
+========================= */
 
 .hero{
-    min-height:100vh;
+    height:850px;
     position:relative;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    text-align:center;
-    padding:120px 20px 70px;
     overflow:hidden;
+
+    background:
+    radial-gradient(
+        circle at 50% 45%,
+        #222231 0%,
+        #0d0d13 32%,
+        #050507 70%
+    );
 }
 
-#three-container{
+#heroCanvas{
     position:absolute;
     inset:0;
-    z-index:0;
-    pointer-events:none;
+    width:100%;
+    height:100%;
+    z-index:1;
 }
 
 .hero-overlay{
     position:absolute;
     inset:0;
-    background:
-        radial-gradient(circle at center,transparent 10%,#050505 80%);
-    z-index:1;
-}
+    z-index:2;
+    pointer-events:none;
 
-.hero-grid{
-    position:absolute;
-    width:100%;
-    height:100%;
-    opacity:.09;
-    background-image:
-        linear-gradient(rgba(255,255,255,.15) 1px,transparent 1px),
-        linear-gradient(90deg,rgba(255,255,255,.15) 1px,transparent 1px);
-    background-size:70px 70px;
-    mask-image:linear-gradient(to bottom,transparent,black 30%,black 60%,transparent);
-    z-index:1;
+    background:
+    radial-gradient(
+        circle at center,
+        transparent 20%,
+        rgba(0,0,0,.35) 75%,
+        rgba(0,0,0,.75)
+    );
 }
 
 .hero-content{
-    position:relative;
-    z-index:3;
-    max-width:1050px;
-}
-
-.status{
-    display:inline-flex;
-    align-items:center;
-    gap:9px;
-    padding:9px 14px;
-    border-radius:100px;
-    border:1px solid rgba(255,255,255,.12);
-    background:rgba(255,255,255,.04);
-    color:#aaa;
-    font-size:12px;
-    font-weight:600;
-    margin-bottom:28px;
-    backdrop-filter:blur(10px);
-}
-
-.status-dot{
-    width:7px;
-    height:7px;
-    border-radius:50%;
-    background:#7cffb2;
-    box-shadow:0 0 15px #7cffb2;
-}
-
-.hero h1{
-    font-size:clamp(58px,10vw,132px);
-    line-height:.87;
-    letter-spacing:-8px;
-    font-weight:900;
-}
-
-.hero h1 .white{
-    color:#fff;
-}
-
-.gradient-text{
-    background:linear-gradient(
-        90deg,
-        #fff 0%,
-        #9c6cff 35%,
-        #57c8ff 65%,
-        #fff 100%
-    );
-    background-size:250%;
-    -webkit-background-clip:text;
-    color:transparent;
-    animation:gradientMove 7s ease infinite;
-}
-
-@keyframes gradientMove{
-    0%,100%{background-position:0%}
-    50%{background-position:100%}
-}
-
-.hero-description{
+    position:absolute;
+    z-index:5;
+    top:190px;
+    left:7%;
     max-width:650px;
-    margin:35px auto 0;
-    color:#888;
-    font-size:17px;
-    line-height:1.7;
-}
-
-.hero-buttons{
-    display:flex;
-    justify-content:center;
-    gap:12px;
-    margin-top:35px;
-    flex-wrap:wrap;
-}
-
-.btn{
-    display:inline-flex;
-    align-items:center;
-    justify-content:center;
-    gap:10px;
-    min-height:52px;
-    padding:0 23px;
-    border-radius:14px;
-    font-size:13px;
-    font-weight:800;
-    transition:
-        transform .25s,
-        box-shadow .25s,
-        border .25s;
-}
-
-.btn-primary{
-    color:#000;
-    background:#fff;
-    box-shadow:0 10px 35px rgba(255,255,255,.10);
-}
-
-.btn-primary:hover{
-    transform:translateY(-4px);
-    box-shadow:0 15px 50px rgba(255,255,255,.20);
-}
-
-.btn-secondary{
-    color:#fff;
-    border:1px solid rgba(255,255,255,.13);
-    background:rgba(255,255,255,.035);
-}
-
-.btn-secondary:hover{
-    transform:translateY(-4px);
-    border-color:rgba(255,255,255,.3);
-}
-
-.scroll-indicator{
-    position:absolute;
-    bottom:28px;
-    left:50%;
-    transform:translateX(-50%);
-    z-index:3;
-    color:#555;
-    font-size:10px;
-    letter-spacing:3px;
-    text-transform:uppercase;
-}
-
-/* =========================================================
-   STATS
-========================================================= */
-
-.stats{
-    width:min(1100px,90%);
-    margin:0 auto;
-    display:grid;
-    grid-template-columns:repeat(3,1fr);
-    border-top:1px solid #1b1b1b;
-    border-bottom:1px solid #1b1b1b;
-}
-
-.stat{
-    text-align:center;
-    padding:35px 20px;
-    border-right:1px solid #1b1b1b;
-}
-
-.stat:last-child{
-    border-right:none;
-}
-
-.stat-number{
-    font-size:34px;
-    font-weight:900;
-    letter-spacing:-2px;
-}
-
-.stat-label{
-    margin-top:7px;
-    color:#666;
-    font-size:11px;
-    text-transform:uppercase;
-    letter-spacing:2px;
-}
-
-/* =========================================================
-   GENERAL SECTIONS
-========================================================= */
-
-section{
-    width:min(1180px,90%);
-    margin:150px auto;
-}
-
-.section-label{
-    color:#9162ff;
-    font-size:11px;
-    font-weight:800;
-    letter-spacing:3px;
-    text-transform:uppercase;
-    margin-bottom:15px;
-}
-
-.section-title{
-    font-size:clamp(40px,6vw,75px);
-    line-height:.95;
-    letter-spacing:-4px;
-    font-weight:900;
-}
-
-.section-description{
-    max-width:570px;
-    margin-top:20px;
-    color:#777;
-    line-height:1.7;
-}
-
-/* =========================================================
-   3D SERVICE CARDS
-========================================================= */
-
-.services-grid{
-    margin-top:55px;
-    display:grid;
-    grid-template-columns:repeat(3,1fr);
-    gap:18px;
-}
-
-.service-card{
-    position:relative;
-    min-height:390px;
-    padding:30px;
-    overflow:hidden;
-
-    border-radius:28px;
-    border:1px solid rgba(255,255,255,.09);
-
-    background:
-        linear-gradient(
-            145deg,
-            rgba(255,255,255,.07),
-            rgba(255,255,255,.015)
-        );
-
-    transform-style:preserve-3d;
-
-    transition:
-        transform .15s ease,
-        border .3s,
-        box-shadow .3s;
-}
-
-.service-card:hover{
-    border-color:rgba(150,100,255,.45);
-    box-shadow:0 30px 80px rgba(0,0,0,.35);
-}
-
-.card-glow{
-    position:absolute;
-    width:180px;
-    height:180px;
-    border-radius:50%;
-    background:#7c3cff;
-    filter:blur(90px);
-    opacity:.14;
-    right:-80px;
-    top:-80px;
     pointer-events:none;
 }
 
-.service-icon{
-    width:60px;
-    height:60px;
-    border-radius:18px;
+.eyebrow{
+    color:#888;
+    font-size:11px;
+    letter-spacing:5px;
+    margin-bottom:25px;
+}
 
-    display:flex;
-    align-items:center;
-    justify-content:center;
+.hero h1{
+    font-size:clamp(60px,9vw,120px);
+    line-height:.8;
+    letter-spacing:-8px;
+    font-weight:950;
+}
 
-    font-size:27px;
-
+.hero h1 .gradient{
     background:
-        linear-gradient(145deg,#242424,#0e0e0e);
+    linear-gradient(
+        100deg,
+        #fff,
+        #777,
+        #fff,
+        #aaa
+    );
 
-    border:1px solid rgba(255,255,255,.1);
+    background-size:300%;
+    color:transparent;
+    background-clip:text;
+    -webkit-background-clip:text;
 
-    box-shadow:
-        0 15px 30px rgba(0,0,0,.4),
-        inset 0 1px rgba(255,255,255,.08);
-
-    transform:translateZ(40px);
+    animation:textShine 5s linear infinite;
 }
 
-.service-card h3{
-    margin-top:80px;
-    font-size:25px;
-    transform:translateZ(35px);
+@keyframes textShine{
+    to{
+        background-position:300%;
+    }
 }
 
-.service-card p{
-    margin-top:13px;
-    color:#777;
+.hero-description{
+    margin-top:35px;
+    max-width:430px;
+    color:#8b8b94;
     line-height:1.7;
     font-size:14px;
-    transform:translateZ(25px);
 }
 
-.service-arrow{
-    position:absolute;
-    bottom:28px;
-    right:30px;
-    width:42px;
-    height:42px;
-    border-radius:50%;
-    border:1px solid #292929;
+.hero-buttons{
+    margin-top:28px;
     display:flex;
-    align-items:center;
-    justify-content:center;
-    color:#888;
+    gap:12px;
+    pointer-events:auto;
 }
 
-/* =========================================================
-   WORK SECTION
-========================================================= */
-
-.work-grid{
-    margin-top:55px;
-    display:grid;
-    grid-template-columns:1.35fr .65fr;
-    gap:18px;
-}
-
-.work-card{
-    position:relative;
-    min-height:470px;
-    border-radius:30px;
-    overflow:hidden;
-    border:1px solid #222;
-    background:#0c0c0c;
-    isolation:isolate;
-}
-
-.work-card.small{
-    min-height:470px;
-}
-
-.work-background{
-    position:absolute;
-    inset:0;
-    z-index:-1;
-    transition:transform .7s ease;
-}
-
-.work-card:hover .work-background{
-    transform:scale(1.08);
-}
-
-.work-one{
-    background:
-        radial-gradient(circle at 30% 30%,#6635c5,transparent 35%),
-        radial-gradient(circle at 80% 80%,#176ea0,transparent 35%),
-        linear-gradient(135deg,#090909,#171717);
-}
-
-.work-two{
-    background:
-        radial-gradient(circle at 70% 25%,#ff5c9c,transparent 30%),
-        radial-gradient(circle at 20% 80%,#5336c8,transparent 35%),
-        linear-gradient(135deg,#0a0a0a,#161616);
-}
-
-.work-content{
-    position:absolute;
-    bottom:30px;
-    left:30px;
-    right:30px;
-}
-
-.work-tag{
+.btn{
+    padding:14px 20px;
+    border-radius:13px;
+    font-size:12px;
+    font-weight:900;
     display:inline-block;
-    padding:7px 11px;
-    border-radius:100px;
-    background:rgba(0,0,0,.35);
-    border:1px solid rgba(255,255,255,.1);
-    font-size:10px;
-    color:#bbb;
-    margin-bottom:14px;
 }
 
-.work-content h3{
-    font-size:35px;
-    letter-spacing:-2px;
+.btn-white{
+    background:#fff;
+    color:#050507;
 }
 
-.work-content p{
-    margin-top:8px;
-    color:#aaa;
-    font-size:13px;
+.btn-outline{
+    border:1px solid #33333d;
+    background:rgba(10,10,15,.5);
 }
 
-/* =========================================================
+.mouse-hint{
+    position:absolute;
+    z-index:5;
+    bottom:28px;
+    left:50%;
+    transform:translateX(-50%);
+    color:#666;
+    font-size:9px;
+    letter-spacing:4px;
+}
+
+/* =========================
    MARQUEE
-========================================================= */
-
-.marquee-wrap{
-    width:100%;
-    overflow:hidden;
-    border-top:1px solid #171717;
-    border-bottom:1px solid #171717;
-    padding:23px 0;
-}
+========================= */
 
 .marquee{
+    height:65px;
     display:flex;
-    width:max-content;
+    align-items:center;
+    overflow:hidden;
+    white-space:nowrap;
+    border-top:1px solid #17171e;
+    border-bottom:1px solid #17171e;
+    background:#07070a;
+}
+
+.marquee-track{
+    display:flex;
+    gap:60px;
     animation:marquee 25s linear infinite;
 }
 
 .marquee span{
-    font-size:14px;
-    font-weight:800;
-    letter-spacing:3px;
-    text-transform:uppercase;
-    color:#555;
-    margin-right:60px;
-}
-
-.marquee b{
-    color:#9b6cff;
+    font-size:11px;
+    letter-spacing:4px;
+    color:#777;
 }
 
 @keyframes marquee{
@@ -644,235 +305,522 @@ section{
     }
 }
 
-/* =========================================================
-   PRICING
-========================================================= */
+/* =========================
+   SECTIONS
+========================= */
 
-.pricing-grid{
-    margin-top:55px;
+.section{
+    padding:120px 6%;
+    position:relative;
+    overflow:hidden;
+}
+
+.section-label{
+    font-size:10px;
+    color:#666;
+    letter-spacing:5px;
+    margin-bottom:20px;
+}
+
+.section-title{
+    font-size:clamp(48px,7vw,90px);
+    line-height:.85;
+    letter-spacing:-6px;
+    font-weight:950;
+    margin-bottom:70px;
+}
+
+.gray{
+    color:#555;
+}
+
+/* =========================
+   SERVICES
+========================= */
+
+.services{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:18px;
+}
+
+.service-card{
+    min-height:380px;
+    position:relative;
+    overflow:hidden;
+
+    padding:30px;
+
+    border:1px solid #1c1c25;
+    border-radius:28px;
+
+    background:
+    linear-gradient(
+        145deg,
+        #131319,
+        #08080c
+    );
+
+    transform-style:preserve-3d;
+
+    transition:
+    transform .5s,
+    border-color .5s;
+}
+
+.service-card:hover{
+    transform:
+    perspective(900px)
+    rotateX(5deg)
+    rotateY(-5deg)
+    translateY(-10px);
+
+    border-color:#555;
+}
+
+.service-number{
+    color:#555;
+    font-size:11px;
+    letter-spacing:3px;
+}
+
+.service-card h3{
+    position:absolute;
+    left:30px;
+    bottom:75px;
+
+    font-size:28px;
+    letter-spacing:-1.5px;
+}
+
+.service-card p{
+    position:absolute;
+    left:30px;
+    right:30px;
+    bottom:30px;
+
+    color:#777;
+    font-size:12px;
+    line-height:1.6;
+}
+
+/* 3D mini objects */
+
+.service-object{
+    position:absolute;
+    top:45px;
+    right:45px;
+
+    width:100px;
+    height:100px;
+
+    transform-style:preserve-3d;
+    animation:miniSpin 8s linear infinite;
+}
+
+.mini-cube{
+    border:1px solid rgba(255,255,255,.5);
+    box-shadow:
+    15px 15px 0 rgba(255,255,255,.03),
+    30px 30px 0 rgba(255,255,255,.02);
+}
+
+.mini-cube::before,
+.mini-cube::after{
+    content:"";
+    position:absolute;
+    inset:0;
+    border:1px solid #444;
+}
+
+.mini-cube::before{
+    transform:translateZ(50px);
+}
+
+.mini-cube::after{
+    transform:rotateY(90deg) translateZ(50px);
+}
+
+@keyframes miniSpin{
+    to{
+        transform:
+        rotateX(360deg)
+        rotateY(360deg)
+        rotateZ(180deg);
+    }
+}
+
+.mini-orb{
+    border-radius:50%;
+    background:
+    radial-gradient(
+        circle at 25% 20%,
+        #fff,
+        #777 10%,
+        #292932 45%,
+        #050507 75%
+    );
+
+    box-shadow:
+    0 0 60px rgba(255,255,255,.12);
+}
+
+.mini-ring{
+    border:1px solid #777;
+    border-radius:50%;
+    box-shadow:
+    0 0 0 15px #16161d,
+    0 0 0 30px #0c0c11;
+}
+
+/* =========================
+   WORK
+========================= */
+
+.work-grid{
+    display:grid;
+    grid-template-columns:1.3fr .7fr;
+    gap:20px;
+}
+
+.work-main{
+    min-height:500px;
+
+    position:relative;
+    overflow:hidden;
+
+    border:1px solid #20202a;
+    border-radius:30px;
+
+    background:
+    radial-gradient(
+        circle at 70% 35%,
+        #292936,
+        #08080d 60%
+    );
+
+    padding:35px;
+}
+
+.work-main h3{
+    position:relative;
+    z-index:3;
+
+    font-size:55px;
+    line-height:.85;
+    letter-spacing:-4px;
+}
+
+.work-tag{
+    color:#777;
+    font-size:10px;
+    letter-spacing:3px;
+    margin-bottom:25px;
+}
+
+/* CSS 3D cube */
+
+.big-cube{
+    position:absolute;
+    width:190px;
+    height:190px;
+
+    right:18%;
+    top:45%;
+
+    transform-style:preserve-3d;
+
+    animation:
+    bigCube 12s linear infinite;
+}
+
+.face{
+    position:absolute;
+    width:190px;
+    height:190px;
+
+    border:1px solid rgba(255,255,255,.3);
+
+    background:
+    linear-gradient(
+        135deg,
+        rgba(255,255,255,.06),
+        rgba(255,255,255,.01)
+    );
+}
+
+.front{
+    transform:translateZ(95px);
+}
+
+.back{
+    transform:rotateY(180deg) translateZ(95px);
+}
+
+.right{
+    transform:rotateY(90deg) translateZ(95px);
+}
+
+.left{
+    transform:rotateY(-90deg) translateZ(95px);
+}
+
+.top{
+    transform:rotateX(90deg) translateZ(95px);
+}
+
+.bottom{
+    transform:rotateX(-90deg) translateZ(95px);
+}
+
+@keyframes bigCube{
+    0%{
+        transform:rotateX(0deg) rotateY(0deg) rotateZ(0deg);
+    }
+
+    100%{
+        transform:
+        rotateX(360deg)
+        rotateY(360deg)
+        rotateZ(180deg);
+    }
+}
+
+.work-side{
+    display:grid;
+    gap:20px;
+}
+
+.work-small{
+    min-height:240px;
+
+    border:1px solid #20202a;
+    border-radius:28px;
+
+    background:#0b0b10;
+
+    padding:30px;
+
+    position:relative;
+    overflow:hidden;
+}
+
+.work-small h3{
+    font-size:30px;
+    line-height:.95;
+    letter-spacing:-2px;
+}
+
+.orbit{
+    position:absolute;
+
+    width:180px;
+    height:180px;
+
+    right:-35px;
+    bottom:-50px;
+
+    border:1px solid #555;
+    border-radius:50%;
+
+    box-shadow:
+    0 0 0 25px #13131a,
+    0 0 0 50px #0c0c11;
+
+    animation:orbitSpin 10s linear infinite;
+}
+
+@keyframes orbitSpin{
+    to{
+        transform:rotate(360deg);
+    }
+}
+
+/* =========================
+   PROCESS
+========================= */
+
+.process{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:15px;
+}
+
+.process-card{
+    padding:28px;
+    min-height:250px;
+
+    border:1px solid #1d1d25;
+    border-radius:24px;
+
+    background:#0a0a0f;
+}
+
+.process-card .num{
+    font-size:45px;
+    font-weight:900;
+    color:#333;
+}
+
+.process-card h3{
+    margin-top:35px;
+    font-size:20px;
+}
+
+.process-card p{
+    margin-top:10px;
+    color:#666;
+    font-size:12px;
+    line-height:1.6;
+}
+
+/* =========================
+   PRICING
+========================= */
+
+.pricing{
     display:grid;
     grid-template-columns:repeat(3,1fr);
     gap:18px;
 }
 
 .price-card{
-    position:relative;
-    padding:35px;
-    min-height:430px;
+    padding:32px;
+    min-height:400px;
 
-    border:1px solid #222;
+    border:1px solid #20202a;
     border-radius:28px;
 
     background:
-        linear-gradient(
-            145deg,
-            rgba(255,255,255,.055),
-            rgba(255,255,255,.01)
-        );
-
-    transition:.3s;
-}
-
-.price-card:hover{
-    transform:translateY(-8px);
-    border-color:#5f3ba0;
+    linear-gradient(
+        145deg,
+        #121218,
+        #07070b
+    );
 }
 
 .price-card.featured{
-    border-color:#7650ba;
-    box-shadow:0 20px 80px rgba(105,55,190,.12);
+    border-color:#666;
+    transform:translateY(-15px);
 }
 
-.featured-label{
-    position:absolute;
-    top:20px;
-    right:20px;
-    padding:7px 10px;
-    border-radius:50px;
-    background:#8c55ff;
-    color:#fff;
-    font-size:9px;
-    font-weight:900;
-    letter-spacing:1px;
-}
-
-.price-card h3{
-    font-size:22px;
+.price-name{
+    font-size:12px;
+    letter-spacing:3px;
+    color:#777;
 }
 
 .price{
-    margin-top:25px;
-    font-size:42px;
-    font-weight:900;
-    letter-spacing:-2px;
+    margin:25px 0;
+
+    font-size:48px;
+    font-weight:950;
+    letter-spacing:-4px;
 }
 
-.price small{
-    font-size:11px;
-    color:#666;
-    letter-spacing:0;
-}
-
-.price-desc{
-    color:#777;
-    font-size:13px;
-    line-height:1.6;
-    margin-top:12px;
-    min-height:55px;
-}
-
-.price-list{
+.price-card ul{
     list-style:none;
-    margin-top:25px;
-}
+    color:#777;
 
-.price-list li{
-    padding:9px 0;
-    color:#999;
     font-size:12px;
-    border-bottom:1px solid #181818;
+    line-height:2.4;
 }
 
-.price-list li::before{
-    content:"✓";
-    color:#9b6cff;
-    margin-right:9px;
+.price-card li{
+    border-bottom:1px solid #16161d;
 }
 
-/* =========================================================
-   PROCESS
-========================================================= */
-
-.process{
-    margin-top:55px;
-    display:grid;
-    grid-template-columns:repeat(4,1fr);
-    gap:12px;
-}
-
-.process-item{
-    padding:25px;
-    border-left:1px solid #282828;
-}
-
-.process-number{
-    font-size:12px;
-    color:#8f62ff;
-    font-weight:900;
-}
-
-.process-item h3{
-    margin-top:35px;
-    font-size:19px;
-}
-
-.process-item p{
-    color:#666;
-    font-size:12px;
-    line-height:1.7;
-    margin-top:10px;
-}
-
-/* =========================================================
+/* =========================
    CTA
-========================================================= */
+========================= */
 
-.cta-section{
-    width:min(1180px,90%);
-    margin:160px auto;
-}
+.cta{
+    margin:40px 6% 100px;
 
-.cta-box{
+    min-height:500px;
+
     position:relative;
     overflow:hidden;
-    padding:100px 40px;
+
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+
     text-align:center;
 
-    border-radius:35px;
-    border:1px solid rgba(255,255,255,.12);
+    border:1px solid #292932;
+    border-radius:38px;
 
     background:
-        radial-gradient(
-            circle at center,
-            rgba(111,60,220,.25),
-            rgba(8,8,8,.95) 65%
-        );
+    radial-gradient(
+        circle at center,
+        #22222d,
+        #07070b 65%
+    );
 }
 
-.cta-box::before{
-    content:"";
+.cta-orb{
     position:absolute;
-    width:300px;
-    height:300px;
-    background:#8954ff;
-    filter:blur(140px);
-    opacity:.18;
-    left:50%;
-    top:50%;
-    transform:translate(-50%,-50%);
+
+    width:350px;
+    height:350px;
+
+    border-radius:50%;
+
+    border:1px solid #555;
+
+    box-shadow:
+    0 0 0 40px rgba(255,255,255,.025),
+    0 0 0 80px rgba(255,255,255,.015);
+
+    animation:
+    ctaSpin 12s linear infinite;
 }
 
-.cta-box > *{
+@keyframes ctaSpin{
+    to{
+        transform:rotate(360deg);
+    }
+}
+
+.cta-content{
     position:relative;
-    z-index:2;
+    z-index:3;
 }
 
-.cta-box h2{
-    font-size:clamp(45px,7vw,90px);
-    letter-spacing:-5px;
-    line-height:.95;
+.cta h2{
+    font-size:clamp(55px,8vw,100px);
+    line-height:.82;
+    letter-spacing:-7px;
 }
 
-.cta-box p{
-    max-width:520px;
-    margin:25px auto;
+.cta p{
     color:#777;
-    line-height:1.7;
+    margin:25px 0;
 }
 
-/* =========================================================
+/* =========================
    FOOTER
-========================================================= */
+========================= */
 
 footer{
-    width:min(1180px,90%);
-    margin:0 auto;
-    padding:35px 0 50px;
-    border-top:1px solid #181818;
+    padding:30px 6%;
 
     display:flex;
     justify-content:space-between;
-    align-items:center;
 
-    color:#555;
-    font-size:11px;
+    border-top:1px solid #17171e;
+
+    color:#666;
+
+    font-size:10px;
+    letter-spacing:2px;
 }
 
-.footer-logo{
-    color:#aaa;
-    font-weight:900;
-}
-
-/* =========================================================
-   SCROLL REVEAL
-========================================================= */
-
-.reveal{
-    opacity:0;
-    transform:translateY(40px);
-    transition:
-        opacity .8s ease,
-        transform .8s ease;
-}
-
-.reveal.visible{
-    opacity:1;
-    transform:translateY(0);
-}
-
-/* =========================================================
+/* =========================
    RESPONSIVE
-========================================================= */
+========================= */
 
 @media(max-width:900px){
 
@@ -880,7 +828,24 @@ footer{
         display:none;
     }
 
-    .services-grid{
+    .hero{
+        height:760px;
+    }
+
+    .hero-content{
+        top:160px;
+        left:7%;
+        right:7%;
+    }
+
+    .hero h1{
+        font-size:65px;
+        letter-spacing:-5px;
+    }
+
+    .services,
+    .pricing,
+    .process{
         grid-template-columns:1fr;
     }
 
@@ -888,796 +853,629 @@ footer{
         grid-template-columns:1fr;
     }
 
-    .pricing-grid{
-        grid-template-columns:1fr;
+    .price-card.featured{
+        transform:none;
     }
 
-    .process{
-        grid-template-columns:1fr 1fr;
+    .big-cube{
+        width:130px;
+        height:130px;
+        right:5%;
     }
 
-    .hero h1{
-        letter-spacing:-5px;
+    .face{
+        width:130px;
+        height:130px;
     }
 
+    .front{transform:translateZ(65px)}
+    .back{transform:rotateY(180deg) translateZ(65px)}
+    .right{transform:rotateY(90deg) translateZ(65px)}
+    .left{transform:rotateY(-90deg) translateZ(65px)}
+    .top{transform:rotateX(90deg) translateZ(65px)}
+    .bottom{transform:rotateX(-90deg) translateZ(65px)}
 }
 
 @media(max-width:600px){
 
-    .stats{
-        grid-template-columns:1fr;
-    }
-
-    .stat{
-        border-right:none;
-        border-bottom:1px solid #1b1b1b;
-    }
-
-    .stat:last-child{
-        border-bottom:none;
-    }
-
-    section{
-        margin:100px auto;
-    }
-
-    .process{
-        grid-template-columns:1fr;
-    }
-
     .hero-description{
-        font-size:14px;
+        max-width:320px;
     }
 
-    .cta-box{
-        padding:70px 20px;
+    .hero-buttons{
+        flex-direction:column;
+        width:180px;
+    }
+
+    .section{
+        padding:80px 6%;
+    }
+
+    .section-title{
+        letter-spacing:-4px;
     }
 
     footer{
         flex-direction:column;
-        gap:12px;
+        gap:15px;
     }
-
-    .cursor,
-    .cursor-ring{
-        display:none;
-    }
-
 }
-
 </style>
 </head>
 
-
 <body>
 
-<div class="noise"></div>
-
-<div class="cursor"></div>
-<div class="cursor-ring"></div>
-
-
-<!-- =====================================================
-     NAVIGATION
-===================================================== -->
-
-<div class="nav-wrap">
-
-<nav>
-
-    <a href="#" class="logo">
-        AI<span>HustleUp</span>
-    </a>
-
-    <div class="nav-links">
-
-        <a href="#services">Services</a>
-
-        <a href="#work">Work</a>
-
-        <a href="#pricing">Pricing</a>
-
-        <a href="#process">Process</a>
-
-        <a href="#contact" class="nav-button">
-            Let's Talk
-        </a>
-
+<!-- LOADER -->
+<div class="loader" id="loader">
+    <div class="loader-inner">
+        <div class="loader-logo">AIHUSTLEUP.</div>
+        <div class="loader-bar">
+            <span></span>
+        </div>
+        <small style="color:#555;letter-spacing:3px">
+            ENTERING THE DIGITAL WORLD
+        </small>
     </div>
-
-</nav>
-
 </div>
 
 
-<!-- =====================================================
+<!-- NAVIGATION -->
+<nav class="nav">
+
+    <div class="logo">
+        AI<span>HUSTLE</span>UP.
+    </div>
+
+    <div class="nav-links">
+        <a href="#services">SERVICES</a>
+        <a href="#work">WORK</a>
+        <a href="#process">PROCESS</a>
+        <a href="#pricing">PRICING</a>
+    </div>
+
+    <a
+        class="nav-button"
+        href="https://wa.me/918766636698"
+        target="_blank"
+    >
+        LET'S TALK
+    </a>
+
+</nav>
+
+
+<!-- =========================
      HERO
-===================================================== -->
+========================= -->
 
-<header class="hero">
+<section class="hero">
 
-    <div id="three-container"></div>
+    <canvas id="heroCanvas"></canvas>
 
     <div class="hero-overlay"></div>
 
-    <div class="hero-grid"></div>
-
     <div class="hero-content">
 
-        <div class="status">
-            <span class="status-dot"></span>
-            Available for new projects
+        <div class="eyebrow">
+            DIGITAL / CREATIVE / 3D
         </div>
 
         <h1>
-
-            <span class="white">
-                BUILD.
-            </span>
-
-            <br>
-
-            <span class="gradient-text">
-                HUSTLE.
-            </span>
-
+            WE BUILD<br>
+            <span class="gradient">UNREAL</span><br>
+            BRANDS.
         </h1>
 
         <p class="hero-description">
-
-            We create websites, content and digital experiences
-            that make businesses impossible to ignore.
-
+            Websites, social content and digital experiences
+            engineered to make your brand impossible to ignore.
         </p>
 
         <div class="hero-buttons">
 
-            <a href="#contact" class="btn btn-primary">
-                Start a Project
-                <span>↗</span>
+            <a
+                href="https://wa.me/918766636698"
+                target="_blank"
+                class="btn btn-white"
+            >
+                START A PROJECT ↗
             </a>
 
-            <a href="#work" class="btn btn-secondary">
-                Explore Our Work
+            <a
+                href="#services"
+                class="btn btn-outline"
+            >
+                EXPLORE ↓
             </a>
 
         </div>
 
     </div>
 
-    <div class="scroll-indicator">
-        Scroll to explore ↓
+    <div class="mouse-hint">
+        MOVE YOUR MOUSE · EXPLORE THE 3D WORLD
     </div>
 
-</header>
+</section>
 
 
-<!-- =====================================================
-     STATS
-===================================================== -->
+<!-- MARQUEE -->
 
-<div class="stats reveal">
+<div class="marquee">
 
-    <div class="stat">
+    <div class="marquee-track">
 
-        <div class="stat-number">
-            100%
-        </div>
+        <span>AIHUSTLEUP</span>
+        <span>✦</span>
+        <span>DIGITAL EXPERIENCES</span>
+        <span>✦</span>
+        <span>WEBSITES</span>
+        <span>✦</span>
+        <span>3D DESIGN</span>
+        <span>✦</span>
+        <span>CONTENT</span>
+        <span>✦</span>
+        <span>CREATIVE</span>
+        <span>✦</span>
 
-        <div class="stat-label">
-            Custom Design
-        </div>
-
-    </div>
-
-
-    <div class="stat">
-
-        <div class="stat-number">
-            24/7
-        </div>
-
-        <div class="stat-label">
-            Digital Presence
-        </div>
-
-    </div>
-
-
-    <div class="stat">
-
-        <div class="stat-number">
-            ∞
-        </div>
-
-        <div class="stat-label">
-            Creative Possibilities
-        </div>
+        <span>AIHUSTLEUP</span>
+        <span>✦</span>
+        <span>DIGITAL EXPERIENCES</span>
+        <span>✦</span>
+        <span>WEBSITES</span>
+        <span>✦</span>
+        <span>3D DESIGN</span>
+        <span>✦</span>
 
     </div>
 
 </div>
 
 
-<!-- =====================================================
+<!-- =========================
      SERVICES
-===================================================== -->
+========================= -->
 
-<section id="services" class="reveal">
+<section class="section" id="services">
 
     <div class="section-label">
-        What we do
+        01 / WHAT WE DO
     </div>
 
     <h2 class="section-title">
-        More than<br>
-        <span class="gradient-text">just websites.</span>
+        DIGITAL<br>
+        <span class="gray">CRAFT.</span>
     </h2>
 
-    <p class="section-description">
+    <div class="services">
 
-        Your online presence is often the first impression
-        people get of your business. We make that impression count.
+        <article class="service-card">
 
-    </p>
-
-
-    <div class="services-grid">
-
-
-        <div class="service-card tilt">
-
-            <div class="card-glow"></div>
-
-            <div class="service-icon">
-                🌐
+            <div class="service-number">
+                01
             </div>
 
+            <div class="service-object mini-cube"></div>
+
             <h3>
-                Websites
+                Web<br>Experiences
             </h3>
 
             <p>
-                Modern, responsive websites built around your
-                business instead of another boring template.
+                Premium responsive websites with
+                animations, interactions, depth and
+                modern visual systems.
             </p>
 
-            <div class="service-arrow">
-                ↗
+        </article>
+
+
+        <article class="service-card">
+
+            <div class="service-number">
+                02
             </div>
 
-        </div>
-
-
-        <div class="service-card tilt">
-
-            <div class="card-glow"></div>
-
-            <div class="service-icon">
-                🎬
-            </div>
+            <div class="service-object mini-orb"></div>
 
             <h3>
-                Content
+                Content<br>Creation
             </h3>
 
             <p>
-                Reels, social media content and creative assets
-                designed to stop the scroll.
+                Scroll-stopping reels, posters and
+                social creatives designed to capture
+                attention.
             </p>
 
-            <div class="service-arrow">
-                ↗
+        </article>
+
+
+        <article class="service-card">
+
+            <div class="service-number">
+                03
             </div>
 
-        </div>
-
-
-        <div class="service-card tilt">
-
-            <div class="card-glow"></div>
-
-            <div class="service-icon">
-                ✦
-            </div>
+            <div class="service-object mini-ring"></div>
 
             <h3>
-                Creative Design
+                Creative<br>Systems
             </h3>
 
             <p>
-                Posters, banners and digital creatives that
-                keep your brand looking consistent.
+                Branding, campaigns and digital assets
+                that give your business a consistent
+                visual identity.
             </p>
 
-            <div class="service-arrow">
-                ↗
-            </div>
-
-        </div>
-
+        </article>
 
     </div>
 
 </section>
 
 
-<!-- =====================================================
-     MARQUEE
-===================================================== -->
-
-<div class="marquee-wrap">
-
-<div class="marquee">
-
-    <span>WEBSITES <b>✦</b></span>
-
-    <span>CREATIVE <b>✦</b></span>
-
-    <span>CONTENT <b>✦</b></span>
-
-    <span>BRANDING <b>✦</b></span>
-
-    <span>DIGITAL <b>✦</b></span>
-
-    <span>WEBSITES <b>✦</b></span>
-
-    <span>CREATIVE <b>✦</b></span>
-
-    <span>CONTENT <b>✦</b></span>
-
-    <span>BRANDING <b>✦</b></span>
-
-    <span>DIGITAL <b>✦</b></span>
-
-</div>
-
-</div>
-
-
-<!-- =====================================================
+<!-- =========================
      WORK
-===================================================== -->
+========================= -->
 
-<section id="work" class="reveal">
+<section class="section" id="work">
 
     <div class="section-label">
-        Selected work
+        02 / SELECTED WORK
     </div>
 
     <h2 class="section-title">
-        Ideas into<br>
-        <span class="gradient-text">experiences.</span>
+        MADE TO<br>
+        <span class="gray">MOVE.</span>
     </h2>
 
 
     <div class="work-grid">
 
+        <div class="work-main">
 
-        <div class="work-card">
+            <div class="work-tag">
+                01 — DIGITAL EXPERIENCE
+            </div>
 
-            <div class="work-background work-one"></div>
+            <h3>
+                THE<br>
+                FUTURE<br>
+                IS 3D.
+            </h3>
 
-            <div class="work-content">
 
-                <div class="work-tag">
-                    BUSINESS WEBSITE
-                </div>
+            <div class="big-cube">
 
-                <h3>
-                    Digital presence
-                </h3>
-
-                <p>
-                    Premium website experiences for ambitious businesses.
-                </p>
+                <div class="face front"></div>
+                <div class="face back"></div>
+                <div class="face right"></div>
+                <div class="face left"></div>
+                <div class="face top"></div>
+                <div class="face bottom"></div>
 
             </div>
 
         </div>
 
 
-        <div class="work-card small">
+        <div class="work-side">
 
-            <div class="work-background work-two"></div>
-
-            <div class="work-content">
+            <div class="work-small">
 
                 <div class="work-tag">
-                    SOCIAL MEDIA
+                    02 — SOCIAL
                 </div>
 
                 <h3>
-                    Scroll stopping
+                    CONTENT<br>
+                    THAT HITS.
                 </h3>
 
-                <p>
-                    Content made to get attention.
-                </p>
+                <div class="orbit"></div>
+
+            </div>
+
+
+            <div class="work-small">
+
+                <div class="work-tag">
+                    03 — BRAND
+                </div>
+
+                <h3>
+                    IDENTITIES<br>
+                    WITH DEPTH.
+                </h3>
+
+                <div
+                    class="orbit"
+                    style="
+                    transform:scale(.65);
+                    right:-5px;
+                    bottom:-70px;
+                    "
+                ></div>
 
             </div>
 
         </div>
-
 
     </div>
 
 </section>
 
 
-<!-- =====================================================
-     PRICING
-===================================================== -->
-
-<section id="pricing" class="reveal">
-
-    <div class="section-label">
-        Pricing
-    </div>
-
-    <h2 class="section-title">
-        Pick your<br>
-        <span class="gradient-text">level.</span>
-    </h2>
-
-    <p class="section-description">
-        Straightforward packages. No confusing agency pricing.
-    </p>
-
-
-    <div class="pricing-grid">
-
-
-        <!-- STARTER -->
-
-        <div class="price-card">
-
-            <h3>
-                Starter
-            </h3>
-
-            <div class="price">
-                ₹4,999
-            </div>
-
-            <p class="price-desc">
-                Everything you need to establish a professional online presence.
-            </p>
-
-            <ul class="price-list">
-
-                <li>
-                    2-page website
-                </li>
-
-                <li>
-                    Mobile responsive
-                </li>
-
-                <li>
-                    WhatsApp integration
-                </li>
-
-                <li>
-                    Google Maps
-                </li>
-
-                <li>
-                    Contact form
-                </li>
-
-                <li>
-                    Domain + hosting for 1 year
-                </li>
-
-            </ul>
-
-        </div>
-
-
-        <!-- PROFESSIONAL -->
-
-        <div class="price-card featured">
-
-            <div class="featured-label">
-                POPULAR
-            </div>
-
-            <h3>
-                Professional
-            </h3>
-
-            <div class="price">
-                ₹7,999
-            </div>
-
-            <p class="price-desc">
-                A complete website designed to make your business stand out.
-            </p>
-
-            <ul class="price-list">
-
-                <li>
-                    4–5 custom pages
-                </li>
-
-                <li>
-                    Animations & interactions
-                </li>
-
-                <li>
-                    Mobile responsive
-                </li>
-
-                <li>
-                    WhatsApp integration
-                </li>
-
-                <li>
-                    Enquiry form
-                </li>
-
-                <li>
-                    Basic SEO
-                </li>
-
-                <li>
-                    Domain + hosting for 1 year
-                </li>
-
-            </ul>
-
-        </div>
-
-
-        <!-- PREMIUM -->
-
-        <div class="price-card">
-
-            <h3>
-                Premium
-            </h3>
-
-            <div class="price">
-                ₹11,999
-            </div>
-
-            <p class="price-desc">
-                A premium digital experience for businesses that want more.
-            </p>
-
-            <ul class="price-list">
-
-                <li>
-                    Premium custom UI
-                </li>
-
-                <li>
-                    3D / advanced animations
-                </li>
-
-                <li>
-                    Advanced interactions
-                </li>
-
-                <li>
-                    Mobile responsive
-                </li>
-
-                <li>
-                    Enquiry system
-                </li>
-
-                <li>
-                    Basic SEO
-                </li>
-
-                <li>
-                    Domain + hosting for 1 year
-                </li>
-
-            </ul>
-
-        </div>
-
-
-    </div>
-
-</section>
-
-
-<!-- =====================================================
+<!-- =========================
      PROCESS
-===================================================== -->
+========================= -->
 
-<section id="process" class="reveal">
+<section class="section" id="process">
 
     <div class="section-label">
-        How it works
+        03 / PROCESS
     </div>
 
     <h2 class="section-title">
-        Simple process.<br>
-        <span class="gradient-text">Serious results.</span>
+        FROM IDEA<br>
+        <span class="gray">TO REALITY.</span>
     </h2>
 
 
     <div class="process">
 
+        <div class="process-card">
 
-        <div class="process-item">
+            <div class="num">01</div>
 
-            <div class="process-number">
-                01
-            </div>
-
-            <h3>
-                Tell us
-            </h3>
+            <h3>DISCOVER</h3>
 
             <p>
-                Tell us about your business, goals and what
-                you want your website to achieve.
+                We understand your business,
+                audience and goals.
             </p>
 
         </div>
 
 
-        <div class="process-item">
+        <div class="process-card">
 
-            <div class="process-number">
-                02
-            </div>
+            <div class="num">02</div>
 
-            <h3>
-                We design
-            </h3>
+            <h3>DESIGN</h3>
 
             <p>
-                We turn your ideas into a modern visual
-                experience designed around your brand.
+                We build the visual direction,
+                structure and experience.
             </p>
 
         </div>
 
 
-        <div class="process-item">
+        <div class="process-card">
 
-            <div class="process-number">
-                03
-            </div>
+            <div class="num">03</div>
 
-            <h3>
-                We build
-            </h3>
+            <h3>BUILD</h3>
 
             <p>
-                Your website gets developed, optimized
-                and tested across devices.
+                Everything gets turned into a
+                responsive digital experience.
             </p>
 
         </div>
 
 
-        <div class="process-item">
+        <div class="process-card">
 
-            <div class="process-number">
-                04
-            </div>
+            <div class="num">04</div>
 
-            <h3>
-                You launch
-            </h3>
+            <h3>LAUNCH</h3>
 
             <p>
-                Your new digital presence goes live and
-                your customers can finally find you online.
+                Your finished website and creative
+                system goes live.
             </p>
 
         </div>
-
 
     </div>
 
 </section>
 
 
-<!-- =====================================================
+<!-- =========================
+     PRICING
+========================= -->
+
+<section class="section" id="pricing">
+
+    <div class="section-label">
+        04 / PACKAGES
+    </div>
+
+    <h2 class="section-title">
+        CHOOSE<br>
+        YOUR <span class="gray">LEVEL.</span>
+    </h2>
+
+
+    <div class="pricing">
+
+
+        <div class="price-card">
+
+            <div class="price-name">
+                STARTER
+            </div>
+
+            <div class="price">
+                ₹4,999
+            </div>
+
+            <ul>
+                <li>✓ 2-page website</li>
+                <li>✓ Mobile responsive</li>
+                <li>✓ WhatsApp integration</li>
+                <li>✓ Contact form</li>
+                <li>✓ Premium UI</li>
+                <li>✓ Basic animations</li>
+            </ul>
+
+        </div>
+
+
+        <div class="price-card featured">
+
+            <div class="price-name">
+                PROFESSIONAL
+            </div>
+
+            <div class="price">
+                ₹7,999
+            </div>
+
+            <ul>
+                <li>✓ 4–5 page website</li>
+                <li>✓ Animations & interactions</li>
+                <li>✓ WhatsApp integration</li>
+                <li>✓ Enquiry system</li>
+                <li>✓ Basic SEO</li>
+                <li>✓ Custom UI</li>
+            </ul>
+
+        </div>
+
+
+        <div class="price-card">
+
+            <div class="price-name">
+                PREMIUM
+            </div>
+
+            <div class="price">
+                ₹11,999
+            </div>
+
+            <ul>
+                <li>✓ Premium custom website</li>
+                <li>✓ Advanced animations</li>
+                <li>✓ 3D visual effects</li>
+                <li>✓ Advanced interactions</li>
+                <li>✓ Premium UI</li>
+                <li>✓ Basic SEO</li>
+            </ul>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
      CTA
-===================================================== -->
+========================= -->
 
-<div class="cta-section reveal" id="contact">
+<section class="cta">
 
-    <div class="cta-box">
+    <div class="cta-orb"></div>
+
+    <div class="cta-content">
 
         <div class="section-label">
-            Let's work together
+            READY TO BUILD?
         </div>
 
         <h2>
-            Your business.<br>
-            <span class="gradient-text">
-                Our creativity.
-            </span>
+            LET'S MAKE<br>
+            SOMETHING<br>
+            <span class="gray">WILD.</span>
         </h2>
 
         <p>
-            Ready to build something people remember?
-            Start a conversation with AIHustleUp.
+            aihustleup@gmail.com
         </p>
 
-        <div class="hero-buttons">
-
-            <a
-                class="btn btn-primary"
-                href="https://wa.me/918766636698"
-                target="_blank"
-            >
-                WhatsApp Us ↗
-            </a>
-
-            <a
-                class="btn btn-secondary"
-                href="mailto:aihustleup@gmail.com"
-            >
-                Email Us
-            </a>
-
-        </div>
+        <a
+            href="https://wa.me/918766636698"
+            target="_blank"
+            class="btn btn-white"
+        >
+            START A PROJECT ↗
+        </a>
 
     </div>
 
-</div>
+</section>
 
 
-<!-- =====================================================
-     FOOTER
-===================================================== -->
+<!-- FOOTER -->
 
 <footer>
 
-    <div class="footer-logo">
-        AIHustleUp
-    </div>
+    <span>
+        © 2026 AIHUSTLEUP
+    </span>
 
-    <div>
-        © 2026 AIHustleUp. All rights reserved.
-    </div>
-
-    <div>
-        Websites • Content • Creative
-    </div>
+    <span>
+        WEBSITES · CONTENT · CREATIVE · 3D
+    </span>
 
 </footer>
 
 
-<script>
+<!-- =========================
+     THREE.JS 3D ENGINE
+========================= -->
 
-/* =========================================================
-   THREE.JS 3D HERO
-========================================================= */
+<script type="module">
 
-const container =
-    document.getElementById("three-container");
+import * as THREE from
+"https://cdn.jsdelivr.net/npm/three@0.180.0/build/three.module.js";
+
+
+/* =========================
+   BASIC SETUP
+========================= */
+
+const canvas =
+document.getElementById("heroCanvas");
 
 const scene =
-    new THREE.Scene();
+new THREE.Scene();
+
+scene.fog =
+new THREE.FogExp2(
+    0x050507,
+    0.018
+);
+
 
 const camera =
-    new THREE.PerspectiveCamera(
-        55,
-        window.innerWidth / window.innerHeight,
-        0.1,
-        1000
-    );
+new THREE.PerspectiveCamera(
+    55,
+    window.innerWidth / window.innerHeight,
+    0.1,
+    1000
+);
 
-camera.position.z = 8;
+camera.position.set(
+    0,
+    0,
+    12
+);
+
 
 const renderer =
-    new THREE.WebGLRenderer({
-        antialias:true,
-        alpha:true
-    });
+new THREE.WebGLRenderer({
+    canvas:canvas,
+    antialias:true,
+    alpha:true
+});
+
 
 renderer.setPixelRatio(
     Math.min(window.devicePixelRatio,2)
@@ -1688,200 +1486,529 @@ renderer.setSize(
     window.innerHeight
 );
 
-container.appendChild(renderer.domElement);
+renderer.outputColorSpace =
+THREE.SRGBColorSpace;
 
 
-/* MAIN 3D OBJECT */
+/* =========================
+   LIGHTING
+========================= */
 
-const geometry =
-    new THREE.IcosahedronGeometry(
-        2.3,
-        2
+const ambient =
+new THREE.AmbientLight(
+    0xffffff,
+    0.45
+);
+
+scene.add(ambient);
+
+
+const mainLight =
+new THREE.PointLight(
+    0xffffff,
+    100,
+    40
+);
+
+mainLight.position.set(
+    5,
+    4,
+    8
+);
+
+scene.add(mainLight);
+
+
+const secondaryLight =
+new THREE.PointLight(
+    0x7777ff,
+    80,
+    40
+);
+
+secondaryLight.position.set(
+    -7,
+    -3,
+    4
+);
+
+scene.add(secondaryLight);
+
+
+const topLight =
+new THREE.PointLight(
+    0xffffff,
+    60,
+    30
+);
+
+topLight.position.set(
+    0,
+    8,
+    2
+);
+
+scene.add(topLight);
+
+
+/* =========================
+   MAIN 3D OBJECT
+========================= */
+
+const mainGroup =
+new THREE.Group();
+
+scene.add(mainGroup);
+
+
+/* Crystal */
+
+const crystalGeometry =
+new THREE.IcosahedronGeometry(
+    2.15,
+    3
+);
+
+
+const crystalMaterial =
+new THREE.MeshPhysicalMaterial({
+
+    color:0xb7b7c8,
+
+    metalness:.9,
+
+    roughness:.12,
+
+    transmission:.08,
+
+    clearcoat:1,
+
+    clearcoatRoughness:.08
+
+});
+
+
+const crystal =
+new THREE.Mesh(
+    crystalGeometry,
+    crystalMaterial
+);
+
+mainGroup.add(crystal);
+
+
+/* Wireframe */
+
+const wireGeometry =
+new THREE.IcosahedronGeometry(
+    2.3,
+    2
+);
+
+
+const wireMaterial =
+new THREE.MeshBasicMaterial({
+
+    color:0xffffff,
+
+    wireframe:true,
+
+    transparent:true,
+
+    opacity:.28
+
+});
+
+
+const wire =
+new THREE.Mesh(
+    wireGeometry,
+    wireMaterial
+);
+
+mainGroup.add(wire);
+
+
+/* Inner object */
+
+const innerGeometry =
+new THREE.IcosahedronGeometry(
+    1.1,
+    2
+);
+
+
+const innerMaterial =
+new THREE.MeshBasicMaterial({
+
+    color:0x555566,
+
+    wireframe:true,
+
+    transparent:true,
+
+    opacity:.65
+
+});
+
+
+const inner =
+new THREE.Mesh(
+    innerGeometry,
+    innerMaterial
+);
+
+mainGroup.add(inner);
+
+
+/* =========================
+   ORBITAL RINGS
+========================= */
+
+for(
+    let i = 0;
+    i < 7;
+    i++
+){
+
+    const ringGeometry =
+    new THREE.TorusGeometry(
+        2.8 + i * .45,
+        .012,
+        8,
+        180
     );
 
-const material =
-    new THREE.MeshStandardMaterial({
 
-        color:0x713cff,
+    const ringMaterial =
+    new THREE.MeshBasicMaterial({
 
-        roughness:.22,
+        color:
+        i % 2 === 0
+        ? 0xffffff
+        : 0x666677,
 
-        metalness:.65,
+        transparent:true,
 
-        wireframe:false
+        opacity:.45
 
     });
 
-const sphere =
+
+    const ring =
+    new THREE.Mesh(
+        ringGeometry,
+        ringMaterial
+    );
+
+
+    ring.rotation.x =
+    i * .43;
+
+    ring.rotation.y =
+    i * .71;
+
+    ring.rotation.z =
+    i * .18;
+
+
+    mainGroup.add(ring);
+}
+
+
+/* =========================
+   FLOATING OBJECTS
+========================= */
+
+const floatingObjects = [];
+
+
+const geometries = [
+
+    new THREE.TetrahedronGeometry(.17),
+
+    new THREE.OctahedronGeometry(.20),
+
+    new THREE.IcosahedronGeometry(.14),
+
+    new THREE.BoxGeometry(
+        .22,
+        .22,
+        .22
+    ),
+
+    new THREE.TorusGeometry(
+        .13,
+        .035,
+        8,
+        20
+    )
+
+];
+
+
+for(
+    let i = 0;
+    i < 100;
+    i++
+){
+
+    const geometry =
+    geometries[
+        i % geometries.length
+    ];
+
+
+    const material =
+    new THREE.MeshStandardMaterial({
+
+        color:
+        i % 4 === 0
+        ? 0xffffff
+        : 0x6d6d7c,
+
+        metalness:.8,
+
+        roughness:.25
+
+    });
+
+
+    const object =
     new THREE.Mesh(
         geometry,
         material
     );
 
-sphere.position.set(
-    0,
-    .1,
-    -1
-);
 
-scene.add(sphere);
+    const angle =
+    Math.random() *
+    Math.PI * 2;
 
 
-/* WIREFRAME */
+    const radius =
+    4.5 +
+    Math.random() * 9;
 
-const wireGeometry =
-    new THREE.IcosahedronGeometry(
-        2.45,
-        2
-    );
-
-const wireMaterial =
-    new THREE.MeshBasicMaterial({
-
-        color:0xa775ff,
-
-        wireframe:true,
-
-        transparent:true,
-
-        opacity:.13
-
-    });
-
-const wire =
-    new THREE.Mesh(
-        wireGeometry,
-        wireMaterial
-    );
-
-wire.position.copy(
-    sphere.position
-);
-
-scene.add(wire);
-
-
-/* SMALL FLOATING OBJECTS */
-
-const floatingObjects = [];
-
-const objectGeometry =
-    new THREE.OctahedronGeometry(
-        .18,
-        0
-    );
-
-for(let i=0;i<28;i++){
-
-    const objectMaterial =
-        new THREE.MeshStandardMaterial({
-
-            color:
-                i % 2 === 0
-                ? 0x8755ff
-                : 0x39bfff,
-
-            metalness:.7,
-
-            roughness:.25
-
-        });
-
-    const object =
-        new THREE.Mesh(
-            objectGeometry,
-            objectMaterial
-        );
 
     object.position.set(
 
-        (Math.random()-.5)*12,
+        Math.cos(angle) *
+        radius,
 
-        (Math.random()-.5)*7,
+        (Math.random() - .5) *
+        9,
 
-        (Math.random()-.5)*5
+        Math.sin(angle) *
+        radius - 4
 
     );
 
-    object.userData.speed =
-        .001 + Math.random()*.004;
 
-    object.userData.offset =
-        Math.random()*10;
+    object.rotation.set(
+
+        Math.random() * 6,
+
+        Math.random() * 6,
+
+        Math.random() * 6
+
+    );
+
+
+    object.userData = {
+
+        rotationSpeed:
+        .002 +
+        Math.random() * .008,
+
+        floatSpeed:
+        .5 +
+        Math.random() * 1.5,
+
+        originalY:
+        object.position.y,
+
+        offset:
+        Math.random() * 10
+
+    };
+
 
     scene.add(object);
 
     floatingObjects.push(object);
+}
+
+
+/* =========================
+   PARTICLE UNIVERSE
+========================= */
+
+const particlePositions = [];
+
+const PARTICLES = 2200;
+
+
+for(
+    let i = 0;
+    i < PARTICLES;
+    i++
+){
+
+    const angle =
+    Math.random() *
+    Math.PI * 2;
+
+
+    const radius =
+    5 +
+    Math.random() * 17;
+
+
+    particlePositions.push(
+
+        Math.cos(angle) *
+        radius,
+
+        (Math.random() - .5) *
+        15,
+
+        Math.sin(angle) *
+        radius - 5
+
+    );
 
 }
 
 
-/* LIGHTING */
-
-const ambient =
-    new THREE.AmbientLight(
-        0xffffff,
-        .55
-    );
-
-scene.add(ambient);
+const particleGeometry =
+new THREE.BufferGeometry();
 
 
-const purpleLight =
-    new THREE.PointLight(
-        0x8d55ff,
-        8,
-        20
-    );
+particleGeometry.setAttribute(
 
-purpleLight.position.set(
-    3,
-    3,
-    5
+    "position",
+
+    new THREE.Float32BufferAttribute(
+        particlePositions,
+        3
+    )
+
 );
 
-scene.add(purpleLight);
+
+const particleMaterial =
+new THREE.PointsMaterial({
+
+    color:0xffffff,
+
+    size:.025,
+
+    transparent:true,
+
+    opacity:.7
+
+});
 
 
-const blueLight =
-    new THREE.PointLight(
-        0x35bfff,
-        5,
-        18
-    );
-
-blueLight.position.set(
-    -4,
-    -2,
-    2
+const particles =
+new THREE.Points(
+    particleGeometry,
+    particleMaterial
 );
 
-scene.add(blueLight);
+
+scene.add(particles);
 
 
-/* MOUSE MOVEMENT */
+/* =========================
+   3D FLOOR GRID
+========================= */
+
+const grid =
+new THREE.GridHelper(
+    80,
+    80,
+    0x33333b,
+    0x111116
+);
+
+
+grid.position.y = -5;
+
+scene.add(grid);
+
+
+/* =========================
+   MOUSE CONTROL
+========================= */
 
 let mouseX = 0;
+
 let mouseY = 0;
 
-document.addEventListener(
+let targetX = 0;
+
+let targetY = 0;
+
+
+window.addEventListener(
     "mousemove",
-    function(e){
+    event => {
 
         mouseX =
-            (e.clientX / window.innerWidth - .5);
+        (event.clientX /
+        window.innerWidth)
+        - .5;
+
 
         mouseY =
-            (e.clientY / window.innerHeight - .5);
+        (event.clientY /
+        window.innerHeight)
+        - .5;
 
     }
 );
 
 
-/* ANIMATION */
+/* =========================
+   TOUCH CONTROL
+========================= */
+
+window.addEventListener(
+    "touchmove",
+    event => {
+
+        if(
+            !event.touches ||
+            !event.touches[0]
+        ) return;
+
+
+        mouseX =
+        (event.touches[0].clientX /
+        window.innerWidth)
+        - .5;
+
+
+        mouseY =
+        (event.touches[0].clientY /
+        window.innerHeight)
+        - .5;
+
+    },
+    {passive:true}
+);
+
+
+/* =========================
+   ANIMATION
+========================= */
 
 const clock =
-    new THREE.Clock();
+new THREE.Clock();
+
 
 function animate(){
 
@@ -1889,62 +2016,108 @@ function animate(){
         animate
     );
 
+
     const time =
-        clock.getElapsedTime();
+    clock.getElapsedTime();
 
 
-    sphere.rotation.x =
-        time * .16;
+    /* Main crystal */
 
-    sphere.rotation.y =
-        time * .23;
+    crystal.rotation.x =
+    time * .22;
+
+    crystal.rotation.y =
+    time * .31;
 
 
     wire.rotation.x =
-        -time * .10;
+    -time * .15;
 
     wire.rotation.y =
-        -time * .15;
+    time * .20;
 
 
-    sphere.position.x +=
-        (mouseX * .5 - sphere.position.x) * .015;
-
-    sphere.position.y +=
-        (-mouseY * .3 - sphere.position.y) * .015;
+    inner.rotation.z =
+    -time * .4;
 
 
-    wire.position.x =
-        sphere.position.x;
+    /* Mouse smoothing */
 
-    wire.position.y =
-        sphere.position.y;
+    targetX +=
+    (mouseX * .65 - targetX)
+    * .035;
 
+
+    targetY +=
+    (mouseY * .45 - targetY)
+    * .035;
+
+
+    mainGroup.rotation.y =
+    targetX;
+
+
+    mainGroup.rotation.x =
+    -targetY;
+
+
+    /* Camera */
+
+    camera.position.x +=
+    (mouseX * 1.7 -
+    camera.position.x)
+    * .025;
+
+
+    camera.position.y +=
+    (-mouseY * 1.1 -
+    camera.position.y)
+    * .025;
+
+
+    camera.lookAt(
+        0,
+        0,
+        0
+    );
+
+
+    /* Floating objects */
 
     floatingObjects.forEach(
-        (obj,index)=>{
+        object => {
 
-            obj.rotation.x +=
-                obj.userData.speed * 30;
+            object.rotation.x +=
+            object.userData.rotationSpeed;
 
-            obj.rotation.y +=
-                obj.userData.speed * 20;
 
-            obj.position.y +=
-                Math.sin(
-                    time +
-                    obj.userData.offset
-                ) * .0008;
+            object.rotation.y +=
+            object.userData.rotationSpeed *
+            1.3;
+
+
+            object.position.y =
+            object.userData.originalY +
+            Math.sin(
+                time *
+                object.userData.floatSpeed +
+                object.userData.offset
+            ) * .35;
 
         }
     );
 
 
-    purpleLight.position.x =
-        3 + mouseX * 4;
+    /* Particle rotation */
 
-    purpleLight.position.y =
-        3 - mouseY * 3;
+    particles.rotation.y =
+    time * .008;
+
+
+    /* Grid movement */
+
+    grid.position.z =
+    (time * .4) % 1;
 
 
     renderer.render(
@@ -1954,20 +2127,25 @@ function animate(){
 
 }
 
+
 animate();
 
 
-/* RESIZE */
+/* =========================
+   RESIZE
+========================= */
 
 window.addEventListener(
     "resize",
-    function(){
+    () => {
 
         camera.aspect =
-            window.innerWidth /
-            window.innerHeight;
+        window.innerWidth /
+        window.innerHeight;
+
 
         camera.updateProjectionMatrix();
+
 
         renderer.setSize(
             window.innerWidth,
@@ -1978,210 +2156,24 @@ window.addEventListener(
 );
 
 
-/* =========================================================
-   CUSTOM CURSOR
-========================================================= */
-
-const cursor =
-    document.querySelector(".cursor");
-
-const ring =
-    document.querySelector(".cursor-ring");
-
-let cursorX = 0;
-let cursorY = 0;
-
-let ringX = 0;
-let ringY = 0;
-
-document.addEventListener(
-    "mousemove",
-    e=>{
-
-        cursorX = e.clientX;
-        cursorY = e.clientY;
-
-        cursor.style.left =
-            cursorX + "px";
-
-        cursor.style.top =
-            cursorY + "px";
-
-    }
-);
-
-function cursorLoop(){
-
-    ringX +=
-        (cursorX-ringX)*.15;
-
-    ringY +=
-        (cursorY-ringY)*.15;
-
-    ring.style.left =
-        ringX + "px";
-
-    ring.style.top =
-        ringY + "px";
-
-    requestAnimationFrame(
-        cursorLoop
-    );
-
-}
-
-cursorLoop();
-
-
-/* =========================================================
-   3D TILT CARDS
-========================================================= */
-
-document
-.querySelectorAll(".tilt")
-.forEach(card=>{
-
-    card.addEventListener(
-        "mousemove",
-        function(e){
-
-            const rect =
-                card.getBoundingClientRect();
-
-            const x =
-                e.clientX -
-                rect.left;
-
-            const y =
-                e.clientY -
-                rect.top;
-
-            const centerX =
-                rect.width/2;
-
-            const centerY =
-                rect.height/2;
-
-            const rotateX =
-                ((y-centerY)/centerY)*-7;
-
-            const rotateY =
-                ((x-centerX)/centerX)*7;
-
-            card.style.transform =
-                `perspective(900px)
-                 rotateX(${rotateX}deg)
-                 rotateY(${rotateY}deg)
-                 translateY(-5px)`;
-
-        }
-    );
-
-
-    card.addEventListener(
-        "mouseleave",
-        function(){
-
-            card.style.transform =
-                "perspective(900px) rotateX(0) rotateY(0)";
-
-        }
-    );
-
-});
-
-
-/* =========================================================
-   SCROLL REVEAL
-========================================================= */
-
-const revealElements =
-    document.querySelectorAll(".reveal");
-
-const observer =
-    new IntersectionObserver(
-        entries=>{
-
-            entries.forEach(
-                entry=>{
-
-                    if(entry.isIntersecting){
-
-                        entry.target
-                            .classList
-                            .add("visible");
-
-                    }
-
-                }
-            );
-
-        },
-        {
-            threshold:.12
-        }
-    );
-
-
-revealElements.forEach(
-    element=>{
-        observer.observe(element);
-    }
-);
-
-
-/* =========================================================
-   LINK HOVER CURSOR
-========================================================= */
-
-document
-.querySelectorAll("a")
-.forEach(link=>{
-
-    link.addEventListener(
-        "mouseenter",
-        ()=>{
-            ring.style.width="60px";
-            ring.style.height="60px";
-        }
-    );
-
-    link.addEventListener(
-        "mouseleave",
-        ()=>{
-            ring.style.width="40px";
-            ring.style.height="40px";
-        }
-    );
-
-});
-
-
-/* =========================================================
-   PARALLAX HERO
-========================================================= */
+/* =========================
+   LOADER
+========================= */
 
 window.addEventListener(
-    "scroll",
-    ()=>{
+    "load",
+    () => {
 
-        const scroll =
-            window.scrollY;
+        setTimeout(
+            () => {
 
-        const heroContent =
-            document.querySelector(
-                ".hero-content"
-            );
+                document
+                .getElementById("loader")
+                .classList.add("hide");
 
-        if(scroll < window.innerHeight){
-
-            heroContent.style.transform =
-                `translateY(${scroll*.12}px)`;
-
-            heroContent.style.opacity =
-                1 - scroll/800;
-
-        }
+            },
+            1800
+        );
 
     }
 );
