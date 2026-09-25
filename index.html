@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>AIHustleUp — Websites & Creative Services</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:Arial, Helvetica, sans-serif;
+    background:#080808;
+    color:white;
+    overflow-x:hidden;
+}
+
+body:before{
+    content:"";
+    position:fixed;
+    width:500px;
+    height:500px;
+    background:#7c3cff;
+    filter:blur(180px);
+    opacity:.18;
+    top:-200px;
+    left:-150px;
+    pointer-events:none;
+}
+
+nav{
+    width:90%;
+    max-width:1200px;
+    margin:25px auto;
+    padding:15px 22px;
+    border:1px solid #252525;
+    border-radius:18px;
+    background:rgba(15,15,15,.8);
+    backdrop-filter:blur(15px);
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    position:relative;
+    z-index:5;
+}
+
+.logo{
+    font-size:22px;
+    font-weight:800;
+}
+
+.logo span{
+    color:#9b5cff;
+}
+
+nav a{
+    color:#aaa;
+    text-decoration:none;
+    margin-left:25px;
+    font-size:14px;
+}
+
+nav a:hover{
+    color:white;
+}
+
+.hero{
+    min-height:85vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    padding:80px 20px;
+}
+
+.hero-content{
+    max-width:900px;
+}
+
+.badge{
+    display:inline-block;
+    border:1px solid #333;
+    padding:8px 14px;
+    border-radius:50px;
+    color:#aaa;
+    font-size:13px;
+    margin-bottom:25px;
+}
+
+h1{
+    font-size:clamp(50px,8vw,100px);
+    line-height:.95;
+    letter-spacing:-5px;
+}
+
+.gradient{
+    background:linear-gradient(90deg,#fff,#9b5cff,#5e9cff);
+    -webkit-background-clip:text;
+    color:transparent;
+}
+
+.hero p{
+    color:#999;
+    font-size:18px;
+    line-height:1.6;
+    max-width:650px;
+    margin:30px auto;
+}
+
+.buttons{
+    display:flex;
+    justify-content:center;
+    gap:12px;
+    flex-wrap:wrap;
+}
+
+.btn{
+    padding:15px 24px;
+    border-radius:12px;
+    text-decoration:none;
+    font-weight:bold;
+    transition:.2s;
+}
+
+.primary{
+    background:white;
+    color:black;
+}
+
+.primary:hover{
+    transform:translateY(-3px);
+}
+
+.secondary{
+    border:1px solid #333;
+    color:white;
+}
+
+.secondary:hover{
+    border-color:#777;
+}
+
+section{
+    width:90%;
+    max-width:1200px;
+    margin:100px auto;
+}
+
+.section-title{
+    font-size:42px;
+    margin-bottom:15px;
+}
+
+.section-subtitle{
+    color:#888;
+    margin-bottom:40px;
+}
+
+.cards{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:18px;
+}
+
+.card{
+    border:1px solid #252525;
+    background:#101010;
+    padding:30px;
+    border-radius:22px;
+    transition:.3s;
+}
+
+.card:hover{
+    transform:translateY(-7px);
+    border-color:#7040b8;
+}
+
+.icon{
+    font-size:35px;
+    margin-bottom:25px;
+}
+
+.card h3{
+    margin-bottom:12px;
+}
+
+.card p{
+    color:#888;
+    line-height:1.6;
+}
+
+.price{
+    color:#a970ff;
+    font-size:30px;
+    font-weight:bold;
+    margin:20px 0;
+}
+
+.price small{
+    color:#777;
+    font-size:13px;
+}
+
+.portfolio{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:18px;
+}
+
+.project{
+    min-height:280px;
+    border-radius:25px;
+    border:1px solid #292929;
+    padding:30px;
+    display:flex;
+    flex-direction:column;
+    justify-content:flex-end;
+    background:linear-gradient(135deg,#171717,#0d0d0d);
+}
+
+.project h3{
+    font-size:28px;
+}
+
+.project p{
+    color:#888;
+    margin-top:8px;
+}
+
+.cta{
+    text-align:center;
+    padding:80px 30px;
+    border:1px solid #292929;
+    border-radius:30px;
+    background:radial-gradient(circle at center,#24163d,#0d0d0d 60%);
+}
+
+.cta h2{
+    font-size:55px;
+    margin-bottom:20px;
+}
+
+footer{
+    border-top:1px solid #222;
+    padding:35px 5%;
+    color:#666;
+    display:flex;
+    justify-content:space-between;
+}
+
+@media(max-width:800px){
+    .cards{
+        grid-template-columns:1fr;
+    }
+
+    .portfolio{
+        grid-template-columns:1fr;
+    }
+
+    nav a{
+        display:none;
+    }
+
+    h1{
+        letter-spacing:-3px;
+    }
+
+    .cta h2{
+        font-size:38px;
+    }
+
+    footer{
+        flex-direction:column;
+        gap:10px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<nav>
+    <div class="logo">AI<span>HustleUp</span></div>
+
+    <div>
+        <a href="#services">Services</a>
+        <a href="#work">Work</a>
+        <a href="#pricing">Pricing</a>
+        <a href="#contact">Contact</a>
+    </div>
+</nav>
+
+<header class="hero">
+    <div class="hero-content">
+
+        <div class="badge">⚡ Websites • Content • Creative</div>
+
+        <h1>
+            We build<br>
+            <span class="gradient">digital presence.</span>
+        </h1>
+
+        <p>
+            Modern websites and creative content for businesses
+            that want to look professional online.
+        </p>
+
+        <div class="buttons">
+            <a class="btn primary" href="#contact">Start a Project →</a>
+            <a class="btn secondary" href="#work">See Our Work</a>
+        </div>
+
+    </div>
+</header>
+
+
+<section id="services">
+
+    <h2 class="section-title">What we do.</h2>
+    <p class="section-subtitle">
+        Everything you need to build your online presence.
+    </p>
+
+    <div class="cards">
+
+        <div class="card">
+            <div class="icon">🌐</div>
+            <h3>Websites</h3>
+            <p>
+                Modern, responsive websites designed to make
+                your business look professional.
+            </p>
+        </div>
+
+        <div class="card">
+            <div class="icon">🎬</div>
+            <h3>Content Creation</h3>
+            <p>
+                Short-form content and creative posts designed
+                for Instagram and social media.
+            </p>
+        </div>
+
+        <div class="card">
+            <div class="icon">📢</div>
+            <h3>Creative Design</h3>
+            <p>
+                Posters, banners and digital creatives for
+                businesses and social media pages.
+            </p>
+        </div>
+
+    </div>
+
+</section>
+
+
+<section id="work">
+
+    <h2 class="section-title">Our work.</h2>
+    <p class="section-subtitle">
+        A few things we can create for your brand.
+    </p>
+
+    <div class="portfolio">
+
+        <div class="project">
+            <h3>Business Websites</h3>
+            <p>Clean • Modern • Mobile Responsive</p>
+        </div>
+
+        <div class="project">
+            <h3>Social Media</h3>
+            <p>Reels • Posters • Creative Content</p>
+        </div>
+
+    </div>
+
+</section>
+
+
+<section id="pricing">
+
+    <h2 class="section-title">Simple pricing.</h2>
+    <p class="section-subtitle">
+        Start small. Scale when you're ready.
+    </p>
+
+    <div class="cards">
+
+        <div class="card">
+            <h3>Starter Website</h3>
+            <div class="price">₹4,999</div>
+            <p>2-page professional website with mobile design and WhatsApp integration.</p>
+        </div>
+
+        <div class="card">
+            <h3>Professional Website</h3>
+            <div class="price">₹7,999</div>
+            <p>4–5 pages, animations, enquiry form and basic SEO.</p>
+        </div>
+
+        <div class="card">
+            <h3>Premium Website</h3>
+            <div class="price">₹11,999</div>
+            <p>Premium UI, advanced interactions and custom animations.</p>
+        </div>
+
+    </div>
+
+</section>
+
+
+<section id="contact">
+
+    <div class="cta">
+
+        <h2>Let's build something.</h2>
+
+        <p style="color:#888;margin-bottom:30px;">
+            Have a project in mind? Let's talk.
+        </p>
+
+        <div class="buttons">
+
+            <a class="btn primary"
+               href="https://wa.me/918766636698">
+               WhatsApp Us
+            </a>
+
+            <a class="btn secondary"
+               href="mailto:aihustleup@gmail.com">
+               Email Us
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<footer>
+
+    <div>© 2026 AIHustleUp</div>
+
+    <div>Websites • Content • Creative</div>
+
+</footer>
+
+</body>
+</html>
