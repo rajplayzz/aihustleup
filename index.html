@@ -1,12 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>AIHustleUp — Websites & Creative Services</title>
+<title>AIHustleUp — Build. Create. Hustle.</title>
+
+<meta name="description" content="AIHustleUp builds modern websites, creative content and digital experiences for ambitious businesses.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 
 <style>
+
+/* =========================================================
+   RESET
+========================================================= */
+
 *{
     margin:0;
     padding:0;
@@ -18,444 +33,2160 @@ html{
 }
 
 body{
-    font-family:Arial, Helvetica, sans-serif;
-    background:#080808;
-    color:white;
+    font-family:"Inter",sans-serif;
+    background:#050505;
+    color:#fff;
     overflow-x:hidden;
 }
 
-body:before{
+a{
+    text-decoration:none;
+    color:inherit;
+}
+
+button{
+    font-family:inherit;
+}
+
+/* =========================================================
+   BACKGROUND
+========================================================= */
+
+body::before{
+    content:"";
+    position:fixed;
+    width:650px;
+    height:650px;
+    left:-300px;
+    top:-300px;
+    background:#7c3cff;
+    filter:blur(180px);
+    opacity:.17;
+    pointer-events:none;
+    z-index:-5;
+}
+
+body::after{
     content:"";
     position:fixed;
     width:500px;
     height:500px;
-    background:#7c3cff;
+    right:-250px;
+    top:35%;
+    background:#00c6ff;
     filter:blur(180px);
-    opacity:.18;
-    top:-200px;
-    left:-150px;
+    opacity:.10;
     pointer-events:none;
+    z-index:-5;
+}
+
+.noise{
+    position:fixed;
+    inset:0;
+    pointer-events:none;
+    opacity:.035;
+    z-index:999;
+    background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.8'/%3E%3C/svg%3E");
+}
+
+/* =========================================================
+   CUSTOM CURSOR
+========================================================= */
+
+.cursor{
+    width:12px;
+    height:12px;
+    border-radius:50%;
+    position:fixed;
+    background:#fff;
+    pointer-events:none;
+    z-index:10000;
+    transform:translate(-50%,-50%);
+    mix-blend-mode:difference;
+}
+
+.cursor-ring{
+    width:40px;
+    height:40px;
+    border:1px solid rgba(255,255,255,.55);
+    border-radius:50%;
+    position:fixed;
+    pointer-events:none;
+    z-index:9999;
+    transform:translate(-50%,-50%);
+    transition:width .2s,height .2s;
+}
+
+/* =========================================================
+   NAVIGATION
+========================================================= */
+
+.nav-wrap{
+    position:fixed;
+    top:18px;
+    left:0;
+    width:100%;
+    z-index:500;
 }
 
 nav{
-    width:90%;
-    max-width:1200px;
-    margin:25px auto;
-    padding:15px 22px;
-    border:1px solid #252525;
-    border-radius:18px;
-    background:rgba(15,15,15,.8);
-    backdrop-filter:blur(15px);
+    width:min(1180px,92%);
+    margin:auto;
+    height:68px;
+    padding:0 22px;
+
     display:flex;
-    justify-content:space-between;
     align-items:center;
-    position:relative;
-    z-index:5;
+    justify-content:space-between;
+
+    border:1px solid rgba(255,255,255,.10);
+    border-radius:20px;
+
+    background:rgba(10,10,10,.55);
+    backdrop-filter:blur(20px);
+    -webkit-backdrop-filter:blur(20px);
+
+    box-shadow:
+        0 15px 50px rgba(0,0,0,.25),
+        inset 0 1px 0 rgba(255,255,255,.05);
 }
 
 .logo{
-    font-size:22px;
-    font-weight:800;
+    font-size:20px;
+    font-weight:900;
+    letter-spacing:-1px;
 }
 
 .logo span{
-    color:#9b5cff;
-}
-
-nav a{
-    color:#aaa;
-    text-decoration:none;
-    margin-left:25px;
-    font-size:14px;
-}
-
-nav a:hover{
-    color:white;
-}
-
-.hero{
-    min-height:85vh;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    text-align:center;
-    padding:80px 20px;
-}
-
-.hero-content{
-    max-width:900px;
-}
-
-.badge{
-    display:inline-block;
-    border:1px solid #333;
-    padding:8px 14px;
-    border-radius:50px;
-    color:#aaa;
-    font-size:13px;
-    margin-bottom:25px;
-}
-
-h1{
-    font-size:clamp(50px,8vw,100px);
-    line-height:.95;
-    letter-spacing:-5px;
-}
-
-.gradient{
-    background:linear-gradient(90deg,#fff,#9b5cff,#5e9cff);
+    background:linear-gradient(90deg,#a66cff,#5ac8ff);
     -webkit-background-clip:text;
     color:transparent;
 }
 
-.hero p{
-    color:#999;
-    font-size:18px;
-    line-height:1.6;
-    max-width:650px;
-    margin:30px auto;
+.nav-links{
+    display:flex;
+    gap:30px;
+    align-items:center;
 }
 
-.buttons{
+.nav-links a{
+    color:#999;
+    font-size:13px;
+    font-weight:600;
+    transition:.25s;
+}
+
+.nav-links a:hover{
+    color:white;
+}
+
+.nav-button{
+    padding:11px 17px;
+    border-radius:12px;
+    background:#fff;
+    color:#000 !important;
+}
+
+/* =========================================================
+   HERO
+========================================================= */
+
+.hero{
+    min-height:100vh;
+    position:relative;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    padding:120px 20px 70px;
+    overflow:hidden;
+}
+
+#three-container{
+    position:absolute;
+    inset:0;
+    z-index:0;
+    pointer-events:none;
+}
+
+.hero-overlay{
+    position:absolute;
+    inset:0;
+    background:
+        radial-gradient(circle at center,transparent 10%,#050505 80%);
+    z-index:1;
+}
+
+.hero-grid{
+    position:absolute;
+    width:100%;
+    height:100%;
+    opacity:.09;
+    background-image:
+        linear-gradient(rgba(255,255,255,.15) 1px,transparent 1px),
+        linear-gradient(90deg,rgba(255,255,255,.15) 1px,transparent 1px);
+    background-size:70px 70px;
+    mask-image:linear-gradient(to bottom,transparent,black 30%,black 60%,transparent);
+    z-index:1;
+}
+
+.hero-content{
+    position:relative;
+    z-index:3;
+    max-width:1050px;
+}
+
+.status{
+    display:inline-flex;
+    align-items:center;
+    gap:9px;
+    padding:9px 14px;
+    border-radius:100px;
+    border:1px solid rgba(255,255,255,.12);
+    background:rgba(255,255,255,.04);
+    color:#aaa;
+    font-size:12px;
+    font-weight:600;
+    margin-bottom:28px;
+    backdrop-filter:blur(10px);
+}
+
+.status-dot{
+    width:7px;
+    height:7px;
+    border-radius:50%;
+    background:#7cffb2;
+    box-shadow:0 0 15px #7cffb2;
+}
+
+.hero h1{
+    font-size:clamp(58px,10vw,132px);
+    line-height:.87;
+    letter-spacing:-8px;
+    font-weight:900;
+}
+
+.hero h1 .white{
+    color:#fff;
+}
+
+.gradient-text{
+    background:linear-gradient(
+        90deg,
+        #fff 0%,
+        #9c6cff 35%,
+        #57c8ff 65%,
+        #fff 100%
+    );
+    background-size:250%;
+    -webkit-background-clip:text;
+    color:transparent;
+    animation:gradientMove 7s ease infinite;
+}
+
+@keyframes gradientMove{
+    0%,100%{background-position:0%}
+    50%{background-position:100%}
+}
+
+.hero-description{
+    max-width:650px;
+    margin:35px auto 0;
+    color:#888;
+    font-size:17px;
+    line-height:1.7;
+}
+
+.hero-buttons{
     display:flex;
     justify-content:center;
     gap:12px;
+    margin-top:35px;
     flex-wrap:wrap;
 }
 
 .btn{
-    padding:15px 24px;
-    border-radius:12px;
-    text-decoration:none;
-    font-weight:bold;
-    transition:.2s;
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    gap:10px;
+    min-height:52px;
+    padding:0 23px;
+    border-radius:14px;
+    font-size:13px;
+    font-weight:800;
+    transition:
+        transform .25s,
+        box-shadow .25s,
+        border .25s;
 }
 
-.primary{
-    background:white;
-    color:black;
+.btn-primary{
+    color:#000;
+    background:#fff;
+    box-shadow:0 10px 35px rgba(255,255,255,.10);
 }
 
-.primary:hover{
-    transform:translateY(-3px);
+.btn-primary:hover{
+    transform:translateY(-4px);
+    box-shadow:0 15px 50px rgba(255,255,255,.20);
 }
 
-.secondary{
-    border:1px solid #333;
-    color:white;
+.btn-secondary{
+    color:#fff;
+    border:1px solid rgba(255,255,255,.13);
+    background:rgba(255,255,255,.035);
 }
 
-.secondary:hover{
-    border-color:#777;
+.btn-secondary:hover{
+    transform:translateY(-4px);
+    border-color:rgba(255,255,255,.3);
 }
+
+.scroll-indicator{
+    position:absolute;
+    bottom:28px;
+    left:50%;
+    transform:translateX(-50%);
+    z-index:3;
+    color:#555;
+    font-size:10px;
+    letter-spacing:3px;
+    text-transform:uppercase;
+}
+
+/* =========================================================
+   STATS
+========================================================= */
+
+.stats{
+    width:min(1100px,90%);
+    margin:0 auto;
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    border-top:1px solid #1b1b1b;
+    border-bottom:1px solid #1b1b1b;
+}
+
+.stat{
+    text-align:center;
+    padding:35px 20px;
+    border-right:1px solid #1b1b1b;
+}
+
+.stat:last-child{
+    border-right:none;
+}
+
+.stat-number{
+    font-size:34px;
+    font-weight:900;
+    letter-spacing:-2px;
+}
+
+.stat-label{
+    margin-top:7px;
+    color:#666;
+    font-size:11px;
+    text-transform:uppercase;
+    letter-spacing:2px;
+}
+
+/* =========================================================
+   GENERAL SECTIONS
+========================================================= */
 
 section{
-    width:90%;
-    max-width:1200px;
-    margin:100px auto;
+    width:min(1180px,90%);
+    margin:150px auto;
 }
 
-.section-title{
-    font-size:42px;
+.section-label{
+    color:#9162ff;
+    font-size:11px;
+    font-weight:800;
+    letter-spacing:3px;
+    text-transform:uppercase;
     margin-bottom:15px;
 }
 
-.section-subtitle{
-    color:#888;
-    margin-bottom:40px;
+.section-title{
+    font-size:clamp(40px,6vw,75px);
+    line-height:.95;
+    letter-spacing:-4px;
+    font-weight:900;
 }
 
-.cards{
+.section-description{
+    max-width:570px;
+    margin-top:20px;
+    color:#777;
+    line-height:1.7;
+}
+
+/* =========================================================
+   3D SERVICE CARDS
+========================================================= */
+
+.services-grid{
+    margin-top:55px;
     display:grid;
     grid-template-columns:repeat(3,1fr);
     gap:18px;
 }
 
-.card{
-    border:1px solid #252525;
-    background:#101010;
+.service-card{
+    position:relative;
+    min-height:390px;
     padding:30px;
-    border-radius:22px;
-    transition:.3s;
+    overflow:hidden;
+
+    border-radius:28px;
+    border:1px solid rgba(255,255,255,.09);
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,.07),
+            rgba(255,255,255,.015)
+        );
+
+    transform-style:preserve-3d;
+
+    transition:
+        transform .15s ease,
+        border .3s,
+        box-shadow .3s;
 }
 
-.card:hover{
-    transform:translateY(-7px);
-    border-color:#7040b8;
+.service-card:hover{
+    border-color:rgba(150,100,255,.45);
+    box-shadow:0 30px 80px rgba(0,0,0,.35);
 }
 
-.icon{
-    font-size:35px;
-    margin-bottom:25px;
+.card-glow{
+    position:absolute;
+    width:180px;
+    height:180px;
+    border-radius:50%;
+    background:#7c3cff;
+    filter:blur(90px);
+    opacity:.14;
+    right:-80px;
+    top:-80px;
+    pointer-events:none;
 }
 
-.card h3{
-    margin-bottom:12px;
+.service-icon{
+    width:60px;
+    height:60px;
+    border-radius:18px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    font-size:27px;
+
+    background:
+        linear-gradient(145deg,#242424,#0e0e0e);
+
+    border:1px solid rgba(255,255,255,.1);
+
+    box-shadow:
+        0 15px 30px rgba(0,0,0,.4),
+        inset 0 1px rgba(255,255,255,.08);
+
+    transform:translateZ(40px);
 }
 
-.card p{
-    color:#888;
-    line-height:1.6;
+.service-card h3{
+    margin-top:80px;
+    font-size:25px;
+    transform:translateZ(35px);
 }
 
-.price{
-    color:#a970ff;
-    font-size:30px;
-    font-weight:bold;
-    margin:20px 0;
-}
-
-.price small{
+.service-card p{
+    margin-top:13px;
     color:#777;
-    font-size:13px;
+    line-height:1.7;
+    font-size:14px;
+    transform:translateZ(25px);
 }
 
-.portfolio{
+.service-arrow{
+    position:absolute;
+    bottom:28px;
+    right:30px;
+    width:42px;
+    height:42px;
+    border-radius:50%;
+    border:1px solid #292929;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    color:#888;
+}
+
+/* =========================================================
+   WORK SECTION
+========================================================= */
+
+.work-grid{
+    margin-top:55px;
     display:grid;
-    grid-template-columns:repeat(2,1fr);
+    grid-template-columns:1.35fr .65fr;
     gap:18px;
 }
 
-.project{
-    min-height:280px;
-    border-radius:25px;
-    border:1px solid #292929;
-    padding:30px;
-    display:flex;
-    flex-direction:column;
-    justify-content:flex-end;
-    background:linear-gradient(135deg,#171717,#0d0d0d);
-}
-
-.project h3{
-    font-size:28px;
-}
-
-.project p{
-    color:#888;
-    margin-top:8px;
-}
-
-.cta{
-    text-align:center;
-    padding:80px 30px;
-    border:1px solid #292929;
+.work-card{
+    position:relative;
+    min-height:470px;
     border-radius:30px;
-    background:radial-gradient(circle at center,#24163d,#0d0d0d 60%);
+    overflow:hidden;
+    border:1px solid #222;
+    background:#0c0c0c;
+    isolation:isolate;
 }
 
-.cta h2{
-    font-size:55px;
-    margin-bottom:20px;
+.work-card.small{
+    min-height:470px;
 }
+
+.work-background{
+    position:absolute;
+    inset:0;
+    z-index:-1;
+    transition:transform .7s ease;
+}
+
+.work-card:hover .work-background{
+    transform:scale(1.08);
+}
+
+.work-one{
+    background:
+        radial-gradient(circle at 30% 30%,#6635c5,transparent 35%),
+        radial-gradient(circle at 80% 80%,#176ea0,transparent 35%),
+        linear-gradient(135deg,#090909,#171717);
+}
+
+.work-two{
+    background:
+        radial-gradient(circle at 70% 25%,#ff5c9c,transparent 30%),
+        radial-gradient(circle at 20% 80%,#5336c8,transparent 35%),
+        linear-gradient(135deg,#0a0a0a,#161616);
+}
+
+.work-content{
+    position:absolute;
+    bottom:30px;
+    left:30px;
+    right:30px;
+}
+
+.work-tag{
+    display:inline-block;
+    padding:7px 11px;
+    border-radius:100px;
+    background:rgba(0,0,0,.35);
+    border:1px solid rgba(255,255,255,.1);
+    font-size:10px;
+    color:#bbb;
+    margin-bottom:14px;
+}
+
+.work-content h3{
+    font-size:35px;
+    letter-spacing:-2px;
+}
+
+.work-content p{
+    margin-top:8px;
+    color:#aaa;
+    font-size:13px;
+}
+
+/* =========================================================
+   MARQUEE
+========================================================= */
+
+.marquee-wrap{
+    width:100%;
+    overflow:hidden;
+    border-top:1px solid #171717;
+    border-bottom:1px solid #171717;
+    padding:23px 0;
+}
+
+.marquee{
+    display:flex;
+    width:max-content;
+    animation:marquee 25s linear infinite;
+}
+
+.marquee span{
+    font-size:14px;
+    font-weight:800;
+    letter-spacing:3px;
+    text-transform:uppercase;
+    color:#555;
+    margin-right:60px;
+}
+
+.marquee b{
+    color:#9b6cff;
+}
+
+@keyframes marquee{
+    to{
+        transform:translateX(-50%);
+    }
+}
+
+/* =========================================================
+   PRICING
+========================================================= */
+
+.pricing-grid{
+    margin-top:55px;
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:18px;
+}
+
+.price-card{
+    position:relative;
+    padding:35px;
+    min-height:430px;
+
+    border:1px solid #222;
+    border-radius:28px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,.055),
+            rgba(255,255,255,.01)
+        );
+
+    transition:.3s;
+}
+
+.price-card:hover{
+    transform:translateY(-8px);
+    border-color:#5f3ba0;
+}
+
+.price-card.featured{
+    border-color:#7650ba;
+    box-shadow:0 20px 80px rgba(105,55,190,.12);
+}
+
+.featured-label{
+    position:absolute;
+    top:20px;
+    right:20px;
+    padding:7px 10px;
+    border-radius:50px;
+    background:#8c55ff;
+    color:#fff;
+    font-size:9px;
+    font-weight:900;
+    letter-spacing:1px;
+}
+
+.price-card h3{
+    font-size:22px;
+}
+
+.price{
+    margin-top:25px;
+    font-size:42px;
+    font-weight:900;
+    letter-spacing:-2px;
+}
+
+.price small{
+    font-size:11px;
+    color:#666;
+    letter-spacing:0;
+}
+
+.price-desc{
+    color:#777;
+    font-size:13px;
+    line-height:1.6;
+    margin-top:12px;
+    min-height:55px;
+}
+
+.price-list{
+    list-style:none;
+    margin-top:25px;
+}
+
+.price-list li{
+    padding:9px 0;
+    color:#999;
+    font-size:12px;
+    border-bottom:1px solid #181818;
+}
+
+.price-list li::before{
+    content:"✓";
+    color:#9b6cff;
+    margin-right:9px;
+}
+
+/* =========================================================
+   PROCESS
+========================================================= */
+
+.process{
+    margin-top:55px;
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:12px;
+}
+
+.process-item{
+    padding:25px;
+    border-left:1px solid #282828;
+}
+
+.process-number{
+    font-size:12px;
+    color:#8f62ff;
+    font-weight:900;
+}
+
+.process-item h3{
+    margin-top:35px;
+    font-size:19px;
+}
+
+.process-item p{
+    color:#666;
+    font-size:12px;
+    line-height:1.7;
+    margin-top:10px;
+}
+
+/* =========================================================
+   CTA
+========================================================= */
+
+.cta-section{
+    width:min(1180px,90%);
+    margin:160px auto;
+}
+
+.cta-box{
+    position:relative;
+    overflow:hidden;
+    padding:100px 40px;
+    text-align:center;
+
+    border-radius:35px;
+    border:1px solid rgba(255,255,255,.12);
+
+    background:
+        radial-gradient(
+            circle at center,
+            rgba(111,60,220,.25),
+            rgba(8,8,8,.95) 65%
+        );
+}
+
+.cta-box::before{
+    content:"";
+    position:absolute;
+    width:300px;
+    height:300px;
+    background:#8954ff;
+    filter:blur(140px);
+    opacity:.18;
+    left:50%;
+    top:50%;
+    transform:translate(-50%,-50%);
+}
+
+.cta-box > *{
+    position:relative;
+    z-index:2;
+}
+
+.cta-box h2{
+    font-size:clamp(45px,7vw,90px);
+    letter-spacing:-5px;
+    line-height:.95;
+}
+
+.cta-box p{
+    max-width:520px;
+    margin:25px auto;
+    color:#777;
+    line-height:1.7;
+}
+
+/* =========================================================
+   FOOTER
+========================================================= */
 
 footer{
-    border-top:1px solid #222;
-    padding:35px 5%;
-    color:#666;
+    width:min(1180px,90%);
+    margin:0 auto;
+    padding:35px 0 50px;
+    border-top:1px solid #181818;
+
     display:flex;
     justify-content:space-between;
+    align-items:center;
+
+    color:#555;
+    font-size:11px;
 }
 
-@media(max-width:800px){
-    .cards{
-        grid-template-columns:1fr;
-    }
+.footer-logo{
+    color:#aaa;
+    font-weight:900;
+}
 
-    .portfolio{
-        grid-template-columns:1fr;
-    }
+/* =========================================================
+   SCROLL REVEAL
+========================================================= */
 
-    nav a{
+.reveal{
+    opacity:0;
+    transform:translateY(40px);
+    transition:
+        opacity .8s ease,
+        transform .8s ease;
+}
+
+.reveal.visible{
+    opacity:1;
+    transform:translateY(0);
+}
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media(max-width:900px){
+
+    .nav-links{
         display:none;
     }
 
-    h1{
-        letter-spacing:-3px;
+    .services-grid{
+        grid-template-columns:1fr;
     }
 
-    .cta h2{
-        font-size:38px;
+    .work-grid{
+        grid-template-columns:1fr;
+    }
+
+    .pricing-grid{
+        grid-template-columns:1fr;
+    }
+
+    .process{
+        grid-template-columns:1fr 1fr;
+    }
+
+    .hero h1{
+        letter-spacing:-5px;
+    }
+
+}
+
+@media(max-width:600px){
+
+    .stats{
+        grid-template-columns:1fr;
+    }
+
+    .stat{
+        border-right:none;
+        border-bottom:1px solid #1b1b1b;
+    }
+
+    .stat:last-child{
+        border-bottom:none;
+    }
+
+    section{
+        margin:100px auto;
+    }
+
+    .process{
+        grid-template-columns:1fr;
+    }
+
+    .hero-description{
+        font-size:14px;
+    }
+
+    .cta-box{
+        padding:70px 20px;
     }
 
     footer{
         flex-direction:column;
-        gap:10px;
+        gap:12px;
     }
+
+    .cursor,
+    .cursor-ring{
+        display:none;
+    }
+
 }
+
 </style>
 </head>
 
+
 <body>
 
-<nav>
-    <div class="logo">AI<span>HustleUp</span></div>
+<div class="noise"></div>
 
-    <div>
+<div class="cursor"></div>
+<div class="cursor-ring"></div>
+
+
+<!-- =====================================================
+     NAVIGATION
+===================================================== -->
+
+<div class="nav-wrap">
+
+<nav>
+
+    <a href="#" class="logo">
+        AI<span>HustleUp</span>
+    </a>
+
+    <div class="nav-links">
+
         <a href="#services">Services</a>
+
         <a href="#work">Work</a>
+
         <a href="#pricing">Pricing</a>
-        <a href="#contact">Contact</a>
+
+        <a href="#process">Process</a>
+
+        <a href="#contact" class="nav-button">
+            Let's Talk
+        </a>
+
     </div>
+
 </nav>
 
+</div>
+
+
+<!-- =====================================================
+     HERO
+===================================================== -->
+
 <header class="hero">
+
+    <div id="three-container"></div>
+
+    <div class="hero-overlay"></div>
+
+    <div class="hero-grid"></div>
+
     <div class="hero-content">
 
-        <div class="badge">⚡ Websites • Content • Creative</div>
+        <div class="status">
+            <span class="status-dot"></span>
+            Available for new projects
+        </div>
 
         <h1>
-            We build<br>
-            <span class="gradient">digital presence.</span>
+
+            <span class="white">
+                BUILD.
+            </span>
+
+            <br>
+
+            <span class="gradient-text">
+                HUSTLE.
+            </span>
+
         </h1>
 
-        <p>
-            Modern websites and creative content for businesses
-            that want to look professional online.
+        <p class="hero-description">
+
+            We create websites, content and digital experiences
+            that make businesses impossible to ignore.
+
         </p>
 
-        <div class="buttons">
-            <a class="btn primary" href="#contact">Start a Project →</a>
-            <a class="btn secondary" href="#work">See Our Work</a>
+        <div class="hero-buttons">
+
+            <a href="#contact" class="btn btn-primary">
+                Start a Project
+                <span>↗</span>
+            </a>
+
+            <a href="#work" class="btn btn-secondary">
+                Explore Our Work
+            </a>
+
         </div>
 
     </div>
+
+    <div class="scroll-indicator">
+        Scroll to explore ↓
+    </div>
+
 </header>
 
 
-<section id="services">
+<!-- =====================================================
+     STATS
+===================================================== -->
 
-    <h2 class="section-title">What we do.</h2>
-    <p class="section-subtitle">
-        Everything you need to build your online presence.
+<div class="stats reveal">
+
+    <div class="stat">
+
+        <div class="stat-number">
+            100%
+        </div>
+
+        <div class="stat-label">
+            Custom Design
+        </div>
+
+    </div>
+
+
+    <div class="stat">
+
+        <div class="stat-number">
+            24/7
+        </div>
+
+        <div class="stat-label">
+            Digital Presence
+        </div>
+
+    </div>
+
+
+    <div class="stat">
+
+        <div class="stat-number">
+            ∞
+        </div>
+
+        <div class="stat-label">
+            Creative Possibilities
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- =====================================================
+     SERVICES
+===================================================== -->
+
+<section id="services" class="reveal">
+
+    <div class="section-label">
+        What we do
+    </div>
+
+    <h2 class="section-title">
+        More than<br>
+        <span class="gradient-text">just websites.</span>
+    </h2>
+
+    <p class="section-description">
+
+        Your online presence is often the first impression
+        people get of your business. We make that impression count.
+
     </p>
 
-    <div class="cards">
 
-        <div class="card">
-            <div class="icon">🌐</div>
-            <h3>Websites</h3>
+    <div class="services-grid">
+
+
+        <div class="service-card tilt">
+
+            <div class="card-glow"></div>
+
+            <div class="service-icon">
+                🌐
+            </div>
+
+            <h3>
+                Websites
+            </h3>
+
             <p>
-                Modern, responsive websites designed to make
-                your business look professional.
+                Modern, responsive websites built around your
+                business instead of another boring template.
             </p>
+
+            <div class="service-arrow">
+                ↗
+            </div>
+
         </div>
 
-        <div class="card">
-            <div class="icon">🎬</div>
-            <h3>Content Creation</h3>
+
+        <div class="service-card tilt">
+
+            <div class="card-glow"></div>
+
+            <div class="service-icon">
+                🎬
+            </div>
+
+            <h3>
+                Content
+            </h3>
+
             <p>
-                Short-form content and creative posts designed
-                for Instagram and social media.
+                Reels, social media content and creative assets
+                designed to stop the scroll.
             </p>
+
+            <div class="service-arrow">
+                ↗
+            </div>
+
         </div>
 
-        <div class="card">
-            <div class="icon">📢</div>
-            <h3>Creative Design</h3>
+
+        <div class="service-card tilt">
+
+            <div class="card-glow"></div>
+
+            <div class="service-icon">
+                ✦
+            </div>
+
+            <h3>
+                Creative Design
+            </h3>
+
             <p>
-                Posters, banners and digital creatives for
-                businesses and social media pages.
+                Posters, banners and digital creatives that
+                keep your brand looking consistent.
             </p>
+
+            <div class="service-arrow">
+                ↗
+            </div>
+
         </div>
+
 
     </div>
 
 </section>
 
 
-<section id="work">
+<!-- =====================================================
+     MARQUEE
+===================================================== -->
 
-    <h2 class="section-title">Our work.</h2>
-    <p class="section-subtitle">
-        A few things we can create for your brand.
-    </p>
+<div class="marquee-wrap">
 
-    <div class="portfolio">
+<div class="marquee">
 
-        <div class="project">
-            <h3>Business Websites</h3>
-            <p>Clean • Modern • Mobile Responsive</p>
+    <span>WEBSITES <b>✦</b></span>
+
+    <span>CREATIVE <b>✦</b></span>
+
+    <span>CONTENT <b>✦</b></span>
+
+    <span>BRANDING <b>✦</b></span>
+
+    <span>DIGITAL <b>✦</b></span>
+
+    <span>WEBSITES <b>✦</b></span>
+
+    <span>CREATIVE <b>✦</b></span>
+
+    <span>CONTENT <b>✦</b></span>
+
+    <span>BRANDING <b>✦</b></span>
+
+    <span>DIGITAL <b>✦</b></span>
+
+</div>
+
+</div>
+
+
+<!-- =====================================================
+     WORK
+===================================================== -->
+
+<section id="work" class="reveal">
+
+    <div class="section-label">
+        Selected work
+    </div>
+
+    <h2 class="section-title">
+        Ideas into<br>
+        <span class="gradient-text">experiences.</span>
+    </h2>
+
+
+    <div class="work-grid">
+
+
+        <div class="work-card">
+
+            <div class="work-background work-one"></div>
+
+            <div class="work-content">
+
+                <div class="work-tag">
+                    BUSINESS WEBSITE
+                </div>
+
+                <h3>
+                    Digital presence
+                </h3>
+
+                <p>
+                    Premium website experiences for ambitious businesses.
+                </p>
+
+            </div>
+
         </div>
 
-        <div class="project">
-            <h3>Social Media</h3>
-            <p>Reels • Posters • Creative Content</p>
+
+        <div class="work-card small">
+
+            <div class="work-background work-two"></div>
+
+            <div class="work-content">
+
+                <div class="work-tag">
+                    SOCIAL MEDIA
+                </div>
+
+                <h3>
+                    Scroll stopping
+                </h3>
+
+                <p>
+                    Content made to get attention.
+                </p>
+
+            </div>
+
         </div>
+
 
     </div>
 
 </section>
 
 
-<section id="pricing">
+<!-- =====================================================
+     PRICING
+===================================================== -->
 
-    <h2 class="section-title">Simple pricing.</h2>
-    <p class="section-subtitle">
-        Start small. Scale when you're ready.
+<section id="pricing" class="reveal">
+
+    <div class="section-label">
+        Pricing
+    </div>
+
+    <h2 class="section-title">
+        Pick your<br>
+        <span class="gradient-text">level.</span>
+    </h2>
+
+    <p class="section-description">
+        Straightforward packages. No confusing agency pricing.
     </p>
 
-    <div class="cards">
 
-        <div class="card">
-            <h3>Starter Website</h3>
-            <div class="price">₹4,999</div>
-            <p>2-page professional website with mobile design and WhatsApp integration.</p>
+    <div class="pricing-grid">
+
+
+        <!-- STARTER -->
+
+        <div class="price-card">
+
+            <h3>
+                Starter
+            </h3>
+
+            <div class="price">
+                ₹4,999
+            </div>
+
+            <p class="price-desc">
+                Everything you need to establish a professional online presence.
+            </p>
+
+            <ul class="price-list">
+
+                <li>
+                    2-page website
+                </li>
+
+                <li>
+                    Mobile responsive
+                </li>
+
+                <li>
+                    WhatsApp integration
+                </li>
+
+                <li>
+                    Google Maps
+                </li>
+
+                <li>
+                    Contact form
+                </li>
+
+                <li>
+                    Domain + hosting for 1 year
+                </li>
+
+            </ul>
+
         </div>
 
-        <div class="card">
-            <h3>Professional Website</h3>
-            <div class="price">₹7,999</div>
-            <p>4–5 pages, animations, enquiry form and basic SEO.</p>
+
+        <!-- PROFESSIONAL -->
+
+        <div class="price-card featured">
+
+            <div class="featured-label">
+                POPULAR
+            </div>
+
+            <h3>
+                Professional
+            </h3>
+
+            <div class="price">
+                ₹7,999
+            </div>
+
+            <p class="price-desc">
+                A complete website designed to make your business stand out.
+            </p>
+
+            <ul class="price-list">
+
+                <li>
+                    4–5 custom pages
+                </li>
+
+                <li>
+                    Animations & interactions
+                </li>
+
+                <li>
+                    Mobile responsive
+                </li>
+
+                <li>
+                    WhatsApp integration
+                </li>
+
+                <li>
+                    Enquiry form
+                </li>
+
+                <li>
+                    Basic SEO
+                </li>
+
+                <li>
+                    Domain + hosting for 1 year
+                </li>
+
+            </ul>
+
         </div>
 
-        <div class="card">
-            <h3>Premium Website</h3>
-            <div class="price">₹11,999</div>
-            <p>Premium UI, advanced interactions and custom animations.</p>
+
+        <!-- PREMIUM -->
+
+        <div class="price-card">
+
+            <h3>
+                Premium
+            </h3>
+
+            <div class="price">
+                ₹11,999
+            </div>
+
+            <p class="price-desc">
+                A premium digital experience for businesses that want more.
+            </p>
+
+            <ul class="price-list">
+
+                <li>
+                    Premium custom UI
+                </li>
+
+                <li>
+                    3D / advanced animations
+                </li>
+
+                <li>
+                    Advanced interactions
+                </li>
+
+                <li>
+                    Mobile responsive
+                </li>
+
+                <li>
+                    Enquiry system
+                </li>
+
+                <li>
+                    Basic SEO
+                </li>
+
+                <li>
+                    Domain + hosting for 1 year
+                </li>
+
+            </ul>
+
         </div>
+
 
     </div>
 
 </section>
 
 
-<section id="contact">
+<!-- =====================================================
+     PROCESS
+===================================================== -->
 
-    <div class="cta">
+<section id="process" class="reveal">
 
-        <h2>Let's build something.</h2>
+    <div class="section-label">
+        How it works
+    </div>
 
-        <p style="color:#888;margin-bottom:30px;">
-            Have a project in mind? Let's talk.
+    <h2 class="section-title">
+        Simple process.<br>
+        <span class="gradient-text">Serious results.</span>
+    </h2>
+
+
+    <div class="process">
+
+
+        <div class="process-item">
+
+            <div class="process-number">
+                01
+            </div>
+
+            <h3>
+                Tell us
+            </h3>
+
+            <p>
+                Tell us about your business, goals and what
+                you want your website to achieve.
+            </p>
+
+        </div>
+
+
+        <div class="process-item">
+
+            <div class="process-number">
+                02
+            </div>
+
+            <h3>
+                We design
+            </h3>
+
+            <p>
+                We turn your ideas into a modern visual
+                experience designed around your brand.
+            </p>
+
+        </div>
+
+
+        <div class="process-item">
+
+            <div class="process-number">
+                03
+            </div>
+
+            <h3>
+                We build
+            </h3>
+
+            <p>
+                Your website gets developed, optimized
+                and tested across devices.
+            </p>
+
+        </div>
+
+
+        <div class="process-item">
+
+            <div class="process-number">
+                04
+            </div>
+
+            <h3>
+                You launch
+            </h3>
+
+            <p>
+                Your new digital presence goes live and
+                your customers can finally find you online.
+            </p>
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     CTA
+===================================================== -->
+
+<div class="cta-section reveal" id="contact">
+
+    <div class="cta-box">
+
+        <div class="section-label">
+            Let's work together
+        </div>
+
+        <h2>
+            Your business.<br>
+            <span class="gradient-text">
+                Our creativity.
+            </span>
+        </h2>
+
+        <p>
+            Ready to build something people remember?
+            Start a conversation with AIHustleUp.
         </p>
 
-        <div class="buttons">
+        <div class="hero-buttons">
 
-            <a class="btn primary"
-               href="https://wa.me/918766636698">
-               WhatsApp Us
+            <a
+                class="btn btn-primary"
+                href="https://wa.me/918766636698"
+                target="_blank"
+            >
+                WhatsApp Us ↗
             </a>
 
-            <a class="btn secondary"
-               href="mailto:aihustleup@gmail.com">
-               Email Us
+            <a
+                class="btn btn-secondary"
+                href="mailto:aihustleup@gmail.com"
+            >
+                Email Us
             </a>
 
         </div>
 
     </div>
 
-</section>
+</div>
 
+
+<!-- =====================================================
+     FOOTER
+===================================================== -->
 
 <footer>
 
-    <div>© 2026 AIHustleUp</div>
+    <div class="footer-logo">
+        AIHustleUp
+    </div>
 
-    <div>Websites • Content • Creative</div>
+    <div>
+        © 2026 AIHustleUp. All rights reserved.
+    </div>
+
+    <div>
+        Websites • Content • Creative
+    </div>
 
 </footer>
+
+
+<script>
+
+/* =========================================================
+   THREE.JS 3D HERO
+========================================================= */
+
+const container =
+    document.getElementById("three-container");
+
+const scene =
+    new THREE.Scene();
+
+const camera =
+    new THREE.PerspectiveCamera(
+        55,
+        window.innerWidth / window.innerHeight,
+        0.1,
+        1000
+    );
+
+camera.position.z = 8;
+
+const renderer =
+    new THREE.WebGLRenderer({
+        antialias:true,
+        alpha:true
+    });
+
+renderer.setPixelRatio(
+    Math.min(window.devicePixelRatio,2)
+);
+
+renderer.setSize(
+    window.innerWidth,
+    window.innerHeight
+);
+
+container.appendChild(renderer.domElement);
+
+
+/* MAIN 3D OBJECT */
+
+const geometry =
+    new THREE.IcosahedronGeometry(
+        2.3,
+        2
+    );
+
+const material =
+    new THREE.MeshStandardMaterial({
+
+        color:0x713cff,
+
+        roughness:.22,
+
+        metalness:.65,
+
+        wireframe:false
+
+    });
+
+const sphere =
+    new THREE.Mesh(
+        geometry,
+        material
+    );
+
+sphere.position.set(
+    0,
+    .1,
+    -1
+);
+
+scene.add(sphere);
+
+
+/* WIREFRAME */
+
+const wireGeometry =
+    new THREE.IcosahedronGeometry(
+        2.45,
+        2
+    );
+
+const wireMaterial =
+    new THREE.MeshBasicMaterial({
+
+        color:0xa775ff,
+
+        wireframe:true,
+
+        transparent:true,
+
+        opacity:.13
+
+    });
+
+const wire =
+    new THREE.Mesh(
+        wireGeometry,
+        wireMaterial
+    );
+
+wire.position.copy(
+    sphere.position
+);
+
+scene.add(wire);
+
+
+/* SMALL FLOATING OBJECTS */
+
+const floatingObjects = [];
+
+const objectGeometry =
+    new THREE.OctahedronGeometry(
+        .18,
+        0
+    );
+
+for(let i=0;i<28;i++){
+
+    const objectMaterial =
+        new THREE.MeshStandardMaterial({
+
+            color:
+                i % 2 === 0
+                ? 0x8755ff
+                : 0x39bfff,
+
+            metalness:.7,
+
+            roughness:.25
+
+        });
+
+    const object =
+        new THREE.Mesh(
+            objectGeometry,
+            objectMaterial
+        );
+
+    object.position.set(
+
+        (Math.random()-.5)*12,
+
+        (Math.random()-.5)*7,
+
+        (Math.random()-.5)*5
+
+    );
+
+    object.userData.speed =
+        .001 + Math.random()*.004;
+
+    object.userData.offset =
+        Math.random()*10;
+
+    scene.add(object);
+
+    floatingObjects.push(object);
+
+}
+
+
+/* LIGHTING */
+
+const ambient =
+    new THREE.AmbientLight(
+        0xffffff,
+        .55
+    );
+
+scene.add(ambient);
+
+
+const purpleLight =
+    new THREE.PointLight(
+        0x8d55ff,
+        8,
+        20
+    );
+
+purpleLight.position.set(
+    3,
+    3,
+    5
+);
+
+scene.add(purpleLight);
+
+
+const blueLight =
+    new THREE.PointLight(
+        0x35bfff,
+        5,
+        18
+    );
+
+blueLight.position.set(
+    -4,
+    -2,
+    2
+);
+
+scene.add(blueLight);
+
+
+/* MOUSE MOVEMENT */
+
+let mouseX = 0;
+let mouseY = 0;
+
+document.addEventListener(
+    "mousemove",
+    function(e){
+
+        mouseX =
+            (e.clientX / window.innerWidth - .5);
+
+        mouseY =
+            (e.clientY / window.innerHeight - .5);
+
+    }
+);
+
+
+/* ANIMATION */
+
+const clock =
+    new THREE.Clock();
+
+function animate(){
+
+    requestAnimationFrame(
+        animate
+    );
+
+    const time =
+        clock.getElapsedTime();
+
+
+    sphere.rotation.x =
+        time * .16;
+
+    sphere.rotation.y =
+        time * .23;
+
+
+    wire.rotation.x =
+        -time * .10;
+
+    wire.rotation.y =
+        -time * .15;
+
+
+    sphere.position.x +=
+        (mouseX * .5 - sphere.position.x) * .015;
+
+    sphere.position.y +=
+        (-mouseY * .3 - sphere.position.y) * .015;
+
+
+    wire.position.x =
+        sphere.position.x;
+
+    wire.position.y =
+        sphere.position.y;
+
+
+    floatingObjects.forEach(
+        (obj,index)=>{
+
+            obj.rotation.x +=
+                obj.userData.speed * 30;
+
+            obj.rotation.y +=
+                obj.userData.speed * 20;
+
+            obj.position.y +=
+                Math.sin(
+                    time +
+                    obj.userData.offset
+                ) * .0008;
+
+        }
+    );
+
+
+    purpleLight.position.x =
+        3 + mouseX * 4;
+
+    purpleLight.position.y =
+        3 - mouseY * 3;
+
+
+    renderer.render(
+        scene,
+        camera
+    );
+
+}
+
+animate();
+
+
+/* RESIZE */
+
+window.addEventListener(
+    "resize",
+    function(){
+
+        camera.aspect =
+            window.innerWidth /
+            window.innerHeight;
+
+        camera.updateProjectionMatrix();
+
+        renderer.setSize(
+            window.innerWidth,
+            window.innerHeight
+        );
+
+    }
+);
+
+
+/* =========================================================
+   CUSTOM CURSOR
+========================================================= */
+
+const cursor =
+    document.querySelector(".cursor");
+
+const ring =
+    document.querySelector(".cursor-ring");
+
+let cursorX = 0;
+let cursorY = 0;
+
+let ringX = 0;
+let ringY = 0;
+
+document.addEventListener(
+    "mousemove",
+    e=>{
+
+        cursorX = e.clientX;
+        cursorY = e.clientY;
+
+        cursor.style.left =
+            cursorX + "px";
+
+        cursor.style.top =
+            cursorY + "px";
+
+    }
+);
+
+function cursorLoop(){
+
+    ringX +=
+        (cursorX-ringX)*.15;
+
+    ringY +=
+        (cursorY-ringY)*.15;
+
+    ring.style.left =
+        ringX + "px";
+
+    ring.style.top =
+        ringY + "px";
+
+    requestAnimationFrame(
+        cursorLoop
+    );
+
+}
+
+cursorLoop();
+
+
+/* =========================================================
+   3D TILT CARDS
+========================================================= */
+
+document
+.querySelectorAll(".tilt")
+.forEach(card=>{
+
+    card.addEventListener(
+        "mousemove",
+        function(e){
+
+            const rect =
+                card.getBoundingClientRect();
+
+            const x =
+                e.clientX -
+                rect.left;
+
+            const y =
+                e.clientY -
+                rect.top;
+
+            const centerX =
+                rect.width/2;
+
+            const centerY =
+                rect.height/2;
+
+            const rotateX =
+                ((y-centerY)/centerY)*-7;
+
+            const rotateY =
+                ((x-centerX)/centerX)*7;
+
+            card.style.transform =
+                `perspective(900px)
+                 rotateX(${rotateX}deg)
+                 rotateY(${rotateY}deg)
+                 translateY(-5px)`;
+
+        }
+    );
+
+
+    card.addEventListener(
+        "mouseleave",
+        function(){
+
+            card.style.transform =
+                "perspective(900px) rotateX(0) rotateY(0)";
+
+        }
+    );
+
+});
+
+
+/* =========================================================
+   SCROLL REVEAL
+========================================================= */
+
+const revealElements =
+    document.querySelectorAll(".reveal");
+
+const observer =
+    new IntersectionObserver(
+        entries=>{
+
+            entries.forEach(
+                entry=>{
+
+                    if(entry.isIntersecting){
+
+                        entry.target
+                            .classList
+                            .add("visible");
+
+                    }
+
+                }
+            );
+
+        },
+        {
+            threshold:.12
+        }
+    );
+
+
+revealElements.forEach(
+    element=>{
+        observer.observe(element);
+    }
+);
+
+
+/* =========================================================
+   LINK HOVER CURSOR
+========================================================= */
+
+document
+.querySelectorAll("a")
+.forEach(link=>{
+
+    link.addEventListener(
+        "mouseenter",
+        ()=>{
+            ring.style.width="60px";
+            ring.style.height="60px";
+        }
+    );
+
+    link.addEventListener(
+        "mouseleave",
+        ()=>{
+            ring.style.width="40px";
+            ring.style.height="40px";
+        }
+    );
+
+});
+
+
+/* =========================================================
+   PARALLAX HERO
+========================================================= */
+
+window.addEventListener(
+    "scroll",
+    ()=>{
+
+        const scroll =
+            window.scrollY;
+
+        const heroContent =
+            document.querySelector(
+                ".hero-content"
+            );
+
+        if(scroll < window.innerHeight){
+
+            heroContent.style.transform =
+                `translateY(${scroll*.12}px)`;
+
+            heroContent.style.opacity =
+                1 - scroll/800;
+
+        }
+
+    }
+);
+
+</script>
 
 </body>
 </html>
