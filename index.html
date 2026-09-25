@@ -900,6 +900,675 @@ footer{
         gap:15px;
     }
 }
+
+/* =========================================================
+   AIHUSTLEUP — MOBILE-FIRST CREATIVE LAYER
+   ========================================================= */
+
+:root{
+    --ink:#08090d;
+    --panel:#11131a;
+    --line:rgba(255,255,255,.13);
+    --soft:#a8aab5;
+    --bright:#f7f7fa;
+}
+
+body{
+    background:#08090d;
+}
+
+.nav{
+    background:rgba(17,18,24,.72);
+    border-color:rgba(255,255,255,.15);
+}
+
+.hero{
+    background:
+      radial-gradient(circle at 50% 32%,#36384b 0%,#171923 34%,#090a0e 73%);
+}
+
+.hero-overlay{
+    background:
+      radial-gradient(circle at 50% 38%,transparent 5%,rgba(5,6,10,.15) 45%,rgba(5,6,10,.58) 100%);
+}
+
+.marquee{
+    background:#0d0f14;
+}
+
+.section{
+    background:linear-gradient(180deg,#0b0c11 0%,#0a0b0f 100%);
+}
+
+.section-title{
+    margin-bottom:42px;
+}
+
+.service-card,
+.price-card,
+.process-card,
+.work-small,
+.work-main{
+    background:
+      radial-gradient(circle at 80% 15%,rgba(255,255,255,.075),transparent 32%),
+      linear-gradient(145deg,#171a22,#0c0e13);
+    border-color:rgba(255,255,255,.14);
+}
+
+.service-card{
+    min-height:365px;
+    box-shadow:0 25px 80px rgba(0,0,0,.22);
+}
+
+.service-card h3{
+    z-index:4;
+    font-size:29px;
+}
+
+.service-card p{
+    z-index:4;
+    color:#a0a2ad;
+}
+
+/* Content creation 3D scene */
+.content-scene,
+.web-scene,
+.identity-scene{
+    position:absolute;
+    inset:35px 24px 92px;
+    perspective:800px;
+    transform-style:preserve-3d;
+}
+
+.content-phone{
+    position:absolute;
+    width:105px;
+    height:184px;
+    left:50%;
+    top:50%;
+    transform:translate(-50%,-50%) rotateX(7deg) rotateY(-17deg) rotateZ(3deg);
+    border:3px solid rgba(255,255,255,.72);
+    border-radius:21px;
+    padding:7px;
+    background:linear-gradient(145deg,#292d39,#08090d);
+    box-shadow:
+      22px 26px 45px rgba(0,0,0,.48),
+      -10px -10px 30px rgba(255,255,255,.06);
+    transform-style:preserve-3d;
+    animation:phoneFloat 5s ease-in-out infinite;
+}
+.phone-top{
+    width:35px;
+    height:5px;
+    border-radius:5px;
+    background:#555967;
+    margin:1px auto 7px;
+}
+.phone-screen{
+    height:153px;
+    border-radius:14px;
+    position:relative;
+    overflow:hidden;
+    background:
+      radial-gradient(circle at 68% 25%,#9b9fb3 0 8%,transparent 9%),
+      linear-gradient(150deg,#444958,#161922 55%,#08090c);
+}
+.reel-chip{
+    position:absolute;
+    top:8px;
+    left:8px;
+    font-size:6px;
+    letter-spacing:1px;
+    padding:4px 6px;
+    border:1px solid rgba(255,255,255,.35);
+    border-radius:5px;
+}
+.creator-head{
+    position:absolute;
+    width:35px;
+    height:35px;
+    border-radius:50%;
+    background:radial-gradient(circle at 35% 30%,#f0f0f2,#686c7b 65%,#242733);
+    left:35px;
+    top:34px;
+}
+.creator-body{
+    position:absolute;
+    width:70px;
+    height:62px;
+    border-radius:38px 38px 12px 12px;
+    background:linear-gradient(145deg,#e7e8ed,#4c5060);
+    left:18px;
+    top:67px;
+    transform:rotate(-5deg);
+}
+.content-lines{
+    position:absolute;
+    left:9px;
+    bottom:12px;
+    display:grid;
+    gap:4px;
+}
+.content-lines i{
+    display:block;
+    width:52px;
+    height:3px;
+    background:rgba(255,255,255,.72);
+    border-radius:4px;
+}
+.content-lines i:nth-child(2){width:38px;opacity:.65}
+.content-lines i:nth-child(3){width:25px;opacity:.45}
+.like-bubble{
+    position:absolute;
+    right:7px;
+    bottom:12px;
+    width:20px;
+    height:20px;
+    display:grid;
+    place-items:center;
+    border-radius:50%;
+    background:rgba(255,255,255,.14);
+    font-size:9px;
+}
+.content-orbit{
+    position:absolute;
+    left:50%;
+    top:50%;
+    border:1px solid rgba(255,255,255,.34);
+    border-radius:50%;
+    transform-style:preserve-3d;
+    pointer-events:none;
+}
+.orbit-a{
+    width:185px;height:62px;
+    transform:translate(-50%,-50%) rotateX(66deg) rotateZ(13deg);
+    animation:orbit3d 7s linear infinite;
+}
+.orbit-b{
+    width:165px;height:165px;
+    transform:translate(-50%,-50%) rotateY(67deg) rotateZ(-16deg);
+    border-color:rgba(255,255,255,.17);
+    animation:orbit3d 10s linear infinite reverse;
+}
+.float-tag{
+    position:absolute;
+    z-index:5;
+    padding:7px 9px;
+    border:1px solid rgba(255,255,255,.2);
+    background:rgba(255,255,255,.08);
+    backdrop-filter:blur(10px);
+    border-radius:8px;
+    font-size:7px;
+    letter-spacing:1px;
+    box-shadow:0 12px 30px rgba(0,0,0,.28);
+}
+.tag-views{right:8%;top:18%;animation:tagFloat 4s ease-in-out infinite}
+.tag-reel{left:5%;bottom:16%;animation:tagFloat 4.8s ease-in-out infinite reverse}
+.float-dot{
+    position:absolute;
+    width:7px;height:7px;border-radius:50%;
+    background:#e9eaf0;
+    box-shadow:0 0 20px rgba(255,255,255,.6);
+}
+.dot-1{right:10%;bottom:24%;animation:tagFloat 3.3s ease-in-out infinite}
+.dot-2{left:12%;top:23%;animation:tagFloat 5s ease-in-out infinite reverse}
+
+/* Website building 3D scene */
+.web-browser{
+    position:absolute;
+    width:190px;
+    height:118px;
+    left:50%;
+    top:50%;
+    transform:translate(-50%,-50%) rotateX(11deg) rotateY(-18deg) rotateZ(-2deg);
+    border:1px solid rgba(255,255,255,.35);
+    border-radius:11px;
+    overflow:hidden;
+    background:rgba(13,15,21,.92);
+    box-shadow:22px 25px 50px rgba(0,0,0,.5),0 0 45px rgba(255,255,255,.06);
+    transform-style:preserve-3d;
+    animation:browserFloat 5.5s ease-in-out infinite;
+}
+.browser-bar{
+    height:18px;
+    display:flex;
+    align-items:center;
+    gap:4px;
+    padding:0 7px;
+    background:#20232d;
+    border-bottom:1px solid rgba(255,255,255,.1);
+}
+.browser-bar b{
+    width:5px;height:5px;border-radius:50%;background:#8b8e99;
+}
+.browser-bar span{
+    margin-left:7px;
+    font-size:5px;
+    color:#858996;
+}
+.browser-body{
+    padding:13px;
+    position:relative;
+    height:100%;
+    background:
+      radial-gradient(circle at 80% 35%,rgba(255,255,255,.16),transparent 30%),
+      linear-gradient(145deg,#252a35,#0e1016);
+}
+.web-nav{width:55%;height:4px;border-radius:3px;background:#c8cad1;margin-bottom:17px}
+.web-hero-line{width:62%;height:7px;border-radius:3px;background:#f4f4f7;margin-bottom:5px}
+.web-hero-line.short{width:44%;opacity:.55}
+.web-button{width:38px;height:12px;border-radius:4px;background:#f4f4f7;margin-top:12px}
+.web-card-row{position:absolute;left:13px;right:13px;bottom:13px;display:flex;gap:5px}
+.web-card-row i{height:23px;flex:1;border-radius:4px;background:rgba(255,255,255,.11);border:1px solid rgba(255,255,255,.12)}
+.web-orbit{
+    position:absolute;
+    left:50%;top:50%;
+    border:1px solid rgba(255,255,255,.28);
+    border-radius:50%;
+    transform-style:preserve-3d;
+}
+.web-orbit-1{width:230px;height:70px;transform:translate(-50%,-50%) rotateX(68deg) rotateZ(-12deg);animation:orbit3d 8s linear infinite}
+.web-orbit-2{width:210px;height:210px;transform:translate(-50%,-50%) rotateY(67deg);border-color:rgba(255,255,255,.12);animation:orbit3d 12s linear infinite reverse}
+.web-floating{
+    position:absolute;
+    font-size:10px;
+    color:#d9dae0;
+    text-shadow:0 0 16px rgba(255,255,255,.3);
+    font-weight:900;
+}
+.f1{left:6%;top:17%;animation:tagFloat 4s ease-in-out infinite}
+.f2{right:5%;bottom:21%;animation:tagFloat 4.7s ease-in-out infinite reverse}
+.f3{right:12%;top:18%;animation:tagFloat 3.5s ease-in-out infinite}
+
+/* Identity visual */
+.identity-core{
+    position:absolute;
+    left:50%;top:50%;
+    width:86px;height:86px;
+    transform:translate(-50%,-50%) translateZ(35px);
+    display:grid;place-items:center;
+    border-radius:25px;
+    font-size:43px;
+    font-weight:950;
+    background:linear-gradient(145deg,#f5f5f8,#686c78 60%,#171922);
+    color:#101117;
+    box-shadow:25px 28px 45px rgba(0,0,0,.45),inset -7px -8px 12px rgba(0,0,0,.25);
+    animation:identityFloat 4.8s ease-in-out infinite;
+}
+.identity-label{
+    position:absolute;
+    left:50%;top:50%;
+    transform:translate(-50%,78px);
+    font-size:7px;
+    letter-spacing:3px;
+    color:#a7a9b3;
+}
+.identity-ring{
+    position:absolute;
+    left:50%;top:50%;
+    border:1px solid rgba(255,255,255,.28);
+    border-radius:50%;
+    transform-style:preserve-3d;
+}
+.r1{width:170px;height:60px;transform:translate(-50%,-50%) rotateX(65deg) rotateZ(15deg);animation:orbit3d 8s linear infinite}
+.r2{width:135px;height:135px;transform:translate(-50%,-50%) rotateY(70deg);border-color:rgba(255,255,255,.14);animation:orbit3d 11s linear infinite reverse}
+
+/* Future is 3D */
+.work-main{
+    min-height:430px;
+}
+.future-object{
+    right:17%;
+    top:52%;
+    width:140px;
+    height:140px;
+}
+.future-object .face{
+    width:140px;height:140px;
+}
+.future-object .front{transform:translateZ(70px)}
+.future-object .back{transform:rotateY(180deg) translateZ(70px)}
+.future-object .right{transform:rotateY(90deg) translateZ(70px)}
+.future-object .left{transform:rotateY(-90deg) translateZ(70px)}
+.future-object .top{transform:rotateX(90deg) translateZ(70px)}
+.future-object .bottom{transform:rotateX(-90deg) translateZ(70px)}
+.money-symbol{
+    display:grid;
+    place-items:center;
+    width:100%;
+    height:100%;
+    font-size:62px;
+    font-weight:950;
+    color:#f0f0f2;
+    text-shadow:0 7px 20px rgba(0,0,0,.5);
+}
+.money-orbit{
+    position:absolute;
+    width:270px;height:170px;
+    right:5%;top:54%;
+    transform:translateY(-50%) rotateX(62deg) rotateZ(-8deg);
+    border:1px solid rgba(255,255,255,.18);
+    border-radius:50%;
+    animation:orbit3d 8s linear infinite;
+}
+.note{
+    position:absolute;
+    width:34px;height:18px;
+    border-radius:3px;
+    border:1px solid rgba(255,255,255,.6);
+    background:linear-gradient(135deg,#dfe0e4,#737782);
+    color:#111217;
+    font-size:10px;font-weight:900;
+    display:grid;place-items:center;
+    box-shadow:0 7px 14px rgba(0,0,0,.4);
+}
+.note-a{left:3%;top:46%}
+.note-b{left:47%;top:-9%}
+.note-c{right:2%;bottom:10%}
+
+/* Social visual */
+.mini-social-scene{
+    position:absolute;
+    right:7%;
+    bottom:8%;
+    width:190px;
+    height:135px;
+    perspective:600px;
+}
+.social-card-3d{
+    position:absolute;
+    left:28px;top:8px;
+    width:105px;height:125px;
+    border:1px solid rgba(255,255,255,.24);
+    border-radius:12px;
+    background:linear-gradient(145deg,#252934,#0c0e13);
+    transform:rotateY(-18deg) rotateX(8deg);
+    box-shadow:15px 20px 30px rgba(0,0,0,.35);
+    padding:8px;
+    animation:identityFloat 5s ease-in-out infinite;
+}
+.social-photo{
+    height:68px;border-radius:8px;
+    background:radial-gradient(circle at 55% 28%,#e7e8ec 0 10%,transparent 11%),linear-gradient(145deg,#777b88,#222631);
+}
+.social-text{width:75%;height:4px;background:#ddd;border-radius:3px;margin:8px 0 4px}
+.social-text.short{width:45%;opacity:.5}
+.social-person{
+    position:absolute;width:24px;height:24px;border-radius:50%;
+    background:linear-gradient(145deg,#f0f0f2,#565a67);
+    box-shadow:0 8px 18px rgba(0,0,0,.4);
+}
+.p1{right:12px;top:15px}.p2{right:0;bottom:25px}.p3{left:0;bottom:9px}
+
+/* Process 3D */
+.process{
+    gap:12px;
+}
+.process-card{
+    min-height:220px;
+    position:relative;
+    overflow:hidden;
+    transform-style:preserve-3d;
+}
+.process-card .num,
+.process-card h3,
+.process-card p{
+    position:relative;
+    z-index:2;
+}
+.process-orb{
+    position:absolute;
+    right:-30px;top:-35px;
+    width:100px;height:100px;
+    border:1px solid rgba(255,255,255,.22);
+    border-radius:50%;
+    box-shadow:0 0 0 15px rgba(255,255,255,.035),0 0 0 30px rgba(255,255,255,.018);
+    animation:orbit3d 8s linear infinite;
+}
+.po2{animation-duration:10s;transform:rotateX(55deg)}
+.po3{animation-duration:7s;transform:rotateY(55deg)}
+.po4{animation-duration:12s;transform:rotateX(70deg)}
+
+/* Pricing 3D marks */
+.price-card{
+    position:relative;
+    overflow:hidden;
+}
+.price-3d-mark{
+    position:absolute;
+    right:22px;top:20px;
+    width:43px;height:43px;
+    display:grid;place-items:center;
+    border:1px solid rgba(255,255,255,.22);
+    border-radius:12px;
+    font-size:9px;
+    color:#ddd;
+    transform:rotateX(22deg) rotateY(-25deg);
+    box-shadow:8px 10px 25px rgba(0,0,0,.25);
+    animation:markFloat 4s ease-in-out infinite;
+}
+
+/* Motion */
+@keyframes phoneFloat{
+    0%,100%{transform:translate(-50%,-50%) rotateX(7deg) rotateY(-17deg) rotateZ(3deg) translateY(0)}
+    50%{transform:translate(-50%,-50%) rotateX(11deg) rotateY(-8deg) rotateZ(1deg) translateY(-8px)}
+}
+@keyframes browserFloat{
+    0%,100%{transform:translate(-50%,-50%) rotateX(11deg) rotateY(-18deg) rotateZ(-2deg) translateY(0)}
+    50%{transform:translate(-50%,-50%) rotateX(15deg) rotateY(-10deg) rotateZ(1deg) translateY(-7px)}
+}
+@keyframes identityFloat{
+    0%,100%{transform:translate(-50%,-50%) translateZ(35px) rotateX(0deg)}
+    50%{transform:translate(-50%,-54%) translateZ(48px) rotateX(5deg)}
+}
+@keyframes orbit3d{
+    to{transform:translate(-50%,-50%) rotateX(66deg) rotateZ(373deg)}
+}
+@keyframes tagFloat{
+    0%,100%{transform:translate3d(0,0,0)}
+    50%{transform:translate3d(0,-8px,18px)}
+}
+@keyframes markFloat{
+    0%,100%{transform:rotateX(22deg) rotateY(-25deg) translateY(0)}
+    50%{transform:rotateX(28deg) rotateY(-15deg) translateY(-5px)}
+}
+
+@media(max-width:600px){
+    .nav{
+        top:12px;
+        left:4%;
+        right:4%;
+        height:54px;
+        padding:0 13px;
+        border-radius:16px;
+    }
+    .logo{font-size:18px;letter-spacing:-1.2px}
+    .nav-button{padding:9px 12px;font-size:9px}
+
+    .hero{
+        height:700px;
+        min-height:700px;
+    }
+    .hero-content{
+        top:126px;
+        left:7%;
+        right:7%;
+        max-width:none;
+    }
+    .eyebrow{
+        font-size:8px;
+        letter-spacing:3px;
+        margin-bottom:20px;
+    }
+    .hero h1{
+        font-size:58px;
+        line-height:.84;
+        letter-spacing:-5px;
+    }
+    .hero-description{
+        margin-top:23px;
+        font-size:12px;
+        line-height:1.55;
+        max-width:290px;
+        color:#a4a6b0;
+    }
+    .hero-buttons{
+        margin-top:20px;
+        flex-direction:row;
+        width:auto;
+    }
+    .btn{
+        padding:12px 14px;
+        font-size:9px;
+    }
+    .mouse-hint{display:none}
+
+    .marquee{height:51px}
+    .marquee-track{gap:34px}
+    .marquee span{font-size:8px;letter-spacing:3px}
+
+    .section{
+        padding:64px 5%;
+    }
+    .section-label{
+        font-size:8px;
+        letter-spacing:3px;
+        margin-bottom:14px;
+    }
+    .section-title{
+        font-size:44px;
+        line-height:.88;
+        letter-spacing:-4px;
+        margin-bottom:30px;
+    }
+
+    .services{
+        gap:13px;
+    }
+    .service-card{
+        min-height:335px;
+        border-radius:23px;
+        padding:21px;
+    }
+    .service-number{
+        font-size:8px;
+        letter-spacing:2px;
+    }
+    .service-card h3{
+        left:21px;
+        bottom:63px;
+        font-size:25px;
+        letter-spacing:-1.4px;
+    }
+    .service-card p{
+        left:21px;
+        right:21px;
+        bottom:21px;
+        font-size:10px;
+        line-height:1.45;
+    }
+    .content-scene,.web-scene,.identity-scene{
+        inset:27px 10px 82px;
+    }
+    .content-phone{
+        width:92px;height:160px;
+    }
+    .phone-screen{height:132px}
+    .creator-head{width:31px;height:31px;left:30px;top:29px}
+    .creator-body{width:62px;height:53px;left:15px;top:59px}
+    .web-browser{width:174px;height:108px}
+    .web-orbit-1{width:205px}
+    .web-orbit-2{width:190px;height:190px}
+    .identity-core{width:75px;height:75px;font-size:36px}
+    .identity-label{transform:translate(-50%,68px)}
+    .r1{width:150px}
+    .r2{width:120px;height:120px}
+
+    .work-grid{gap:13px}
+    .work-main{
+        min-height:330px;
+        padding:22px;
+        border-radius:23px;
+    }
+    .work-main h3{
+        font-size:43px;
+        letter-spacing:-3px;
+    }
+    .work-tag{font-size:8px;letter-spacing:2px;margin-bottom:18px}
+    .future-object{
+        width:90px;height:90px;
+        right:13%;top:61%;
+    }
+    .future-object .face{width:90px;height:90px}
+    .future-object .front{transform:translateZ(45px)}
+    .future-object .back{transform:rotateY(180deg) translateZ(45px)}
+    .future-object .right{transform:rotateY(90deg) translateZ(45px)}
+    .future-object .left{transform:rotateY(-90deg) translateZ(45px)}
+    .future-object .top{transform:rotateX(90deg) translateZ(45px)}
+    .future-object .bottom{transform:rotateX(-90deg) translateZ(45px)}
+    .money-symbol{font-size:42px}
+    .money-orbit{width:190px;height:110px;right:0;top:64%}
+    .note{width:25px;height:13px;font-size:7px}
+
+    .work-small{
+        min-height:185px;
+        padding:21px;
+        border-radius:22px;
+    }
+    .work-small h3{font-size:25px}
+    .mini-social-scene{transform:scale(.72);transform-origin:right bottom}
+    .identity-work{transform:scale(.75);transform-origin:right bottom}
+
+    .process{
+        grid-template-columns:1fr 1fr;
+        gap:10px;
+    }
+    .process-card{
+        min-height:190px;
+        padding:18px;
+        border-radius:19px;
+    }
+    .process-card .num{font-size:32px}
+    .process-card h3{margin-top:25px;font-size:15px}
+    .process-card p{font-size:9px;line-height:1.45}
+    .process-orb{width:65px;height:65px;right:-23px;top:-25px}
+
+    .pricing{gap:12px}
+    .price-card{
+        min-height:330px;
+        padding:23px;
+        border-radius:22px;
+    }
+    .price{font-size:42px;margin:20px 0}
+    .price-card ul{font-size:10px;line-height:2.2}
+    .price-3d-mark{width:37px;height:37px;right:18px;top:17px}
+
+    .cta{
+        margin:25px 5% 60px;
+        min-height:390px;
+        border-radius:27px;
+    }
+    .cta-orb{width:250px;height:250px}
+    .cta h2{
+        font-size:52px;
+        letter-spacing:-5px;
+    }
+    .cta p{font-size:11px}
+    footer{
+        padding:23px 5%;
+        font-size:8px;
+    }
+}
+
+/* Respect reduced-motion preferences */
+@media(prefers-reduced-motion:reduce){
+    *,*::before,*::after{
+        animation-duration:.001ms!important;
+        animation-iteration-count:1!important;
+        scroll-behavior:auto!important;
+    }
+}
+
 </style>
 </head>
 
@@ -908,12 +1577,12 @@ footer{
 <!-- LOADER -->
 <div class="loader" id="loader">
     <div class="loader-inner">
-        <div class="loader-logo">AIHUSTLEUP.</div>
+        <div class="loader-logo">AIHUSTLEUP</div>
         <div class="loader-bar">
             <span></span>
         </div>
         <small style="color:#555;letter-spacing:3px">
-            ENTERING THE DIGITAL WORLD
+            ENTERING AIHUSTLEUP
         </small>
     </div>
 </div>
@@ -923,7 +1592,7 @@ footer{
 <nav class="nav">
 
     <div class="logo">
-        AI<span>HUSTLE</span>UP.
+        AI<span>HUSTLE</span>UP
     </div>
 
     <div class="nav-links">
@@ -961,14 +1630,13 @@ footer{
         </div>
 
         <h1>
-            WE BUILD<br>
-            <span class="gradient">UNREAL</span><br>
-            BRANDS.
+            BUILD<br>
+            <span class="gradient">BOLD.</span><br>
+            ONLINE.
         </h1>
 
         <p class="hero-description">
-            Websites, social content and digital experiences
-            engineered to make your brand impossible to ignore.
+            Websites, content and digital experiences built to make your business look bigger, sharper and impossible to scroll past.
         </p>
 
         <div class="hero-buttons">
@@ -1049,64 +1717,89 @@ footer{
 
     <div class="services">
 
-        <article class="service-card">
+        <article class="service-card content-card">
 
-            <div class="service-number">
-                01
+            <div class="service-number">01 / CONTENT</div>
+
+            <div class="content-scene" aria-hidden="true">
+                <div class="content-phone">
+                    <div class="phone-top"></div>
+                    <div class="phone-screen">
+                        <div class="reel-chip">REEL</div>
+                        <div class="creator-head"></div>
+                        <div class="creator-body"></div>
+                        <div class="content-lines"><i></i><i></i><i></i></div>
+                        <div class="like-bubble">♥</div>
+                    </div>
+                </div>
+                <div class="content-orbit orbit-a"></div>
+                <div class="content-orbit orbit-b"></div>
+                <span class="float-tag tag-views">+12.8K</span>
+                <span class="float-tag tag-reel">REEL</span>
+                <span class="float-dot dot-1"></span>
+                <span class="float-dot dot-2"></span>
             </div>
 
-            <div class="service-object mini-cube"></div>
-
-            <h3>
-                Web<br>Experiences
-            </h3>
+            <h3>Content<br>Creation</h3>
 
             <p>
-                Premium responsive websites with
-                animations, interactions, depth and
-                modern visual systems.
+                Reels, posters and social creatives made to
+                stop the scroll and turn attention into action.
             </p>
 
         </article>
 
 
-        <article class="service-card">
+        <article class="service-card website-card">
 
-            <div class="service-number">
-                02
+            <div class="service-number">02 / WEB</div>
+
+            <div class="web-scene" aria-hidden="true">
+                <div class="web-browser">
+                    <div class="browser-bar"><b></b><b></b><b></b><span>yourbrand.com</span></div>
+                    <div class="browser-body">
+                        <div class="web-nav"></div>
+                        <div class="web-hero-line"></div>
+                        <div class="web-hero-line short"></div>
+                        <div class="web-button"></div>
+                        <div class="web-card-row"><i></i><i></i><i></i></div>
+                    </div>
+                </div>
+                <div class="web-orbit web-orbit-1"></div>
+                <div class="web-orbit web-orbit-2"></div>
+                <span class="web-floating f1">&lt;/&gt;</span>
+                <span class="web-floating f2">↗</span>
+                <span class="web-floating f3">✦</span>
             </div>
 
-            <div class="service-object mini-orb"></div>
-
-            <h3>
-                Content<br>Creation
-            </h3>
+            <h3>Website<br>Building</h3>
 
             <p>
-                Scroll-stopping reels, posters and
-                social creatives designed to capture
-                attention.
+                Fast, responsive websites with motion, depth,
+                clear structure and a premium first impression.
             </p>
 
         </article>
 
 
-        <article class="service-card">
+        <article class="service-card creative-card">
 
-            <div class="service-number">
-                03
+            <div class="service-number">03 / BRAND</div>
+
+            <div class="identity-scene" aria-hidden="true">
+                <div class="identity-ring r1"></div>
+                <div class="identity-ring r2"></div>
+                <div class="identity-core">
+                    <span>A</span>
+                </div>
+                <div class="identity-label">YOUR BRAND</div>
             </div>
 
-            <div class="service-object mini-ring"></div>
-
-            <h3>
-                Creative<br>Systems
-            </h3>
+            <h3>Creative<br>Systems</h3>
 
             <p>
-                Branding, campaigns and digital assets
-                that give your business a consistent
-                visual identity.
+                Visual identity, campaigns and digital assets
+                that make your brand feel consistent everywhere.
             </p>
 
         </article>
@@ -1143,19 +1836,25 @@ footer{
             <h3>
                 THE<br>
                 FUTURE<br>
-                IS 3D.
+                <span class="gray">IS 3D.</span>
             </h3>
 
 
-            <div class="big-cube">
+            <div class="big-cube future-object" aria-hidden="true">
 
-                <div class="face front"></div>
-                <div class="face back"></div>
-                <div class="face right"></div>
-                <div class="face left"></div>
+                <div class="face front"><span class="money-symbol">$</span></div>
+                <div class="face back"><span class="money-symbol">₹</span></div>
+                <div class="face right"><span class="money-symbol">$</span></div>
+                <div class="face left"><span class="money-symbol">₹</span></div>
                 <div class="face top"></div>
                 <div class="face bottom"></div>
 
+            </div>
+
+            <div class="money-orbit" aria-hidden="true">
+                <span class="note note-a">$</span>
+                <span class="note note-b">₹</span>
+                <span class="note note-c">$</span>
             </div>
 
         </div>
@@ -1171,10 +1870,19 @@ footer{
 
                 <h3>
                     CONTENT<br>
-                    THAT HITS.
+                    <span class="gray">THAT HITS.</span>
                 </h3>
 
-                <div class="orbit"></div>
+                <div class="mini-social-scene" aria-hidden="true">
+                    <div class="social-card-3d">
+                        <div class="social-photo"></div>
+                        <div class="social-text"></div>
+                        <div class="social-text short"></div>
+                    </div>
+                    <div class="social-person p1"></div>
+                    <div class="social-person p2"></div>
+                    <div class="social-person p3"></div>
+                </div>
 
             </div>
 
@@ -1187,17 +1895,14 @@ footer{
 
                 <h3>
                     IDENTITIES<br>
-                    WITH DEPTH.
+                    <span class="gray">WITH DEPTH.</span>
                 </h3>
 
-                <div
-                    class="orbit"
-                    style="
-                    transform:scale(.65);
-                    right:-5px;
-                    bottom:-70px;
-                    "
-                ></div>
+                <div class="identity-work" aria-hidden="true">
+                    <div class="identity-work-ring"></div>
+                    <div class="identity-work-core">A</div>
+                    <span>01</span><span>02</span><span>03</span>
+                </div>
 
             </div>
 
@@ -1227,7 +1932,7 @@ footer{
     <div class="process">
 
         <div class="process-card">
-
+            <div class="process-orb po1"></div>
             <div class="num">01</div>
 
             <h3>DISCOVER</h3>
@@ -1241,7 +1946,7 @@ footer{
 
 
         <div class="process-card">
-
+            <div class="process-orb po2"></div>
             <div class="num">02</div>
 
             <h3>DESIGN</h3>
@@ -1255,7 +1960,7 @@ footer{
 
 
         <div class="process-card">
-
+            <div class="process-orb po3"></div>
             <div class="num">03</div>
 
             <h3>BUILD</h3>
@@ -1269,7 +1974,7 @@ footer{
 
 
         <div class="process-card">
-
+            <div class="process-orb po4"></div>
             <div class="num">04</div>
 
             <h3>LAUNCH</h3>
@@ -1307,6 +2012,7 @@ footer{
 
         <div class="price-card">
 
+            <div class="price-3d-mark">01</div>
             <div class="price-name">
                 STARTER
             </div>
@@ -1329,6 +2035,7 @@ footer{
 
         <div class="price-card featured">
 
+            <div class="price-3d-mark">02</div>
             <div class="price-name">
                 PROFESSIONAL
             </div>
@@ -1351,6 +2058,7 @@ footer{
 
         <div class="price-card">
 
+            <div class="price-3d-mark">03</div>
             <div class="price-name">
                 PREMIUM
             </div>
@@ -1559,6 +2267,97 @@ const mainGroup =
 new THREE.Group();
 
 scene.add(mainGroup);
+
+/* =========================================================
+   HERO MONEY STREAM — ₹ + $ FLOATING THROUGH THE SPACE
+   ========================================================= */
+
+const moneyGroup = new THREE.Group();
+scene.add(moneyGroup);
+
+const moneyNotes = [];
+const noteCanvas = document.createElement("canvas");
+noteCanvas.width = 256;
+noteCanvas.height = 128;
+const noteCtx = noteCanvas.getContext("2d");
+
+function makeMoneyTexture(symbol){
+    noteCtx.clearRect(0,0,256,128);
+
+    const g = noteCtx.createLinearGradient(0,0,256,128);
+    g.addColorStop(0,"#f1f2f4");
+    g.addColorStop(.45,"#b8bbc4");
+    g.addColorStop(1,"#6f737e");
+    noteCtx.fillStyle = g;
+    noteCtx.fillRect(0,0,256,128);
+
+    noteCtx.strokeStyle = "rgba(20,22,28,.45)";
+    noteCtx.lineWidth = 4;
+    noteCtx.strokeRect(7,7,242,114);
+
+    noteCtx.beginPath();
+    noteCtx.arc(128,64,30,0,Math.PI*2);
+    noteCtx.strokeStyle = "rgba(20,22,28,.28)";
+    noteCtx.lineWidth = 3;
+    noteCtx.stroke();
+
+    noteCtx.fillStyle = "#171922";
+    noteCtx.font = "900 44px Arial";
+    noteCtx.textAlign = "center";
+    noteCtx.textBaseline = "middle";
+    noteCtx.fillText(symbol,128,65);
+
+    noteCtx.font = "700 12px Arial";
+    noteCtx.fillText(symbol === "₹" ? "DIGITAL VALUE" : "DIGITAL VALUE",128,103);
+
+    return new THREE.CanvasTexture(noteCanvas);
+}
+
+const moneyTextures = {
+    dollar: makeMoneyTexture("$"),
+    rupee: makeMoneyTexture("₹")
+};
+
+for(let i=0;i<18;i++){
+    const plane = new THREE.Mesh(
+        new THREE.PlaneGeometry(.72,.36),
+        new THREE.MeshPhysicalMaterial({
+            map: i%2 ? moneyTextures.rupee : moneyTextures.dollar,
+            transparent:true,
+            metalness:.15,
+            roughness:.32,
+            side:THREE.DoubleSide
+        })
+    );
+
+    const angle = Math.random()*Math.PI*2;
+    const radius = 4.2 + Math.random()*8.5;
+
+    plane.position.set(
+        Math.cos(angle)*radius,
+        (Math.random()-.5)*7.5,
+        Math.sin(angle)*radius-3
+    );
+
+    plane.rotation.set(
+        Math.random()*Math.PI,
+        Math.random()*Math.PI,
+        Math.random()*Math.PI
+    );
+
+    plane.userData = {
+        speed:.18 + Math.random()*.42,
+        spin:.008 + Math.random()*.018,
+        baseY:plane.position.y,
+        offset:Math.random()*10,
+        radius,
+        angle
+    };
+
+    moneyGroup.add(plane);
+    moneyNotes.push(plane);
+}
+
 
 
 /* Crystal */
@@ -2108,7 +2907,23 @@ function animate(){
     );
 
 
-    /* Particle rotation */
+    
+    /* Currency notes */
+    moneyNotes.forEach((note,i)=>{
+        note.rotation.x += note.userData.spin;
+        note.rotation.y += note.userData.spin * 1.35;
+        note.rotation.z += note.userData.spin * .7;
+
+        note.position.y =
+            note.userData.baseY +
+            Math.sin(time * note.userData.speed + note.userData.offset) * .45;
+
+        note.position.x += Math.sin(time*.12 + i) * .0018;
+    });
+
+    moneyGroup.rotation.y = Math.sin(time*.08)*.08;
+
+/* Particle rotation */
 
     particles.rotation.y =
     time * .008;
@@ -2134,6 +2949,16 @@ animate();
 /* =========================
    RESIZE
 ========================= */
+
+
+/* Mobile performance + composition */
+const isMobile = window.matchMedia("(max-width: 600px)").matches;
+if(isMobile){
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio,1.5));
+    camera.position.z = 13.5;
+    scene.fog.density = .014;
+    particles.scale.setScalar(.82);
+}
 
 window.addEventListener(
     "resize",
