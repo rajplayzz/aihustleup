@@ -1013,16 +1013,6 @@ body{
       radial-gradient(circle at 68% 25%,#9b9fb3 0 8%,transparent 9%),
       linear-gradient(150deg,#444958,#161922 55%,#08090c);
 }
-.reel-chip{
-    position:absolute;
-    top:8px;
-    left:8px;
-    font-size:6px;
-    letter-spacing:1px;
-    padding:4px 6px;
-    border:1px solid rgba(255,255,255,.35);
-    border-radius:5px;
-}
 .creator-head{
     position:absolute;
     width:35px;
@@ -1103,7 +1093,6 @@ body{
     box-shadow:0 12px 30px rgba(0,0,0,.28);
 }
 .tag-views{right:8%;top:18%;animation:tagFloat 4s ease-in-out infinite}
-.tag-reel{left:5%;bottom:16%;animation:tagFloat 4.8s ease-in-out infinite reverse}
 .float-dot{
     position:absolute;
     width:7px;height:7px;border-radius:50%;
@@ -1181,50 +1170,168 @@ body{
 .f3{right:12%;top:18%;animation:tagFloat 3.5s ease-in-out infinite}
 
 /* Identity visual */
-.identity-core{
+.poster-scene{
     position:absolute;
-    left:50%;top:50%;
-    width:86px;height:86px;
-    transform:translate(-50%,-50%) translateZ(35px);
-    display:grid;place-items:center;
-    border-radius:25px;
-    font-size:43px;
-    font-weight:950;
-    background:linear-gradient(145deg,#f5f5f8,#686c78 60%,#171922);
-    color:#101117;
-    box-shadow:25px 28px 45px rgba(0,0,0,.45),inset -7px -8px 12px rgba(0,0,0,.25);
-    animation:identityFloat 4.8s ease-in-out infinite;
-}
-.identity-label{
-    position:absolute;
-    left:50%;top:50%;
-    transform:translate(-50%,78px);
-    font-size:7px;
-    letter-spacing:3px;
-    color:#a7a9b3;
-}
-.identity-ring{
-    position:absolute;
-    left:50%;top:50%;
-    border:1px solid rgba(255,255,255,.28);
-    border-radius:50%;
+    inset:22px 18px 82px;
+    perspective:900px;
     transform-style:preserve-3d;
+    overflow:visible;
 }
-.r1{width:170px;height:60px;transform:translate(-50%,-50%) rotateX(65deg) rotateZ(15deg);animation:orbit3d 8s linear infinite}
-.r2{width:135px;height:135px;transform:translate(-50%,-50%) rotateY(70deg);border-color:rgba(255,255,255,.14);animation:orbit3d 11s linear infinite reverse}
+.poster-card-3d{
+    position:absolute;
+    left:50%; top:50%;
+    width:154px; height:205px;
+    transform:translate(-50%,-50%) rotateX(7deg) rotateY(-18deg) rotateZ(-3deg) translateZ(25px);
+    transform-style:preserve-3d;
+    overflow:hidden;
+    border:1px solid rgba(255,255,255,.42);
+    border-radius:8px;
+    background:
+      radial-gradient(circle at 72% 24%,rgba(255,255,255,.34),transparent 16%),
+      radial-gradient(circle at 22% 72%,rgba(255,255,255,.12),transparent 26%),
+      linear-gradient(145deg,#f1f1f3 0%,#a9adb7 30%,#343842 31%,#0b0d12 100%);
+    box-shadow:25px 30px 45px rgba(0,0,0,.58),inset 0 0 0 1px rgba(255,255,255,.08);
+    animation:posterFloat 5s ease-in-out infinite;
+    z-index:4;
+}
+.poster-card-3d:after{
+    content:""; position:absolute; inset:0;
+    background:linear-gradient(120deg,transparent 30%,rgba(255,255,255,.22) 48%,transparent 58%);
+    transform:translateX(-130%); animation:posterShine 4.5s ease-in-out infinite;
+}
+.poster-topline,.poster-bottom{
+    position:absolute; left:13px; right:13px; z-index:5;
+    font-size:6px; letter-spacing:2px; color:#171920; font-weight:800;
+}
+.poster-topline{top:12px}.poster-bottom{bottom:12px;color:#d9dbe0;font-size:5px}
+.poster-big{
+    position:absolute; left:12px; top:55px; z-index:5;
+    font-size:30px; line-height:.82; letter-spacing:-2px;
+    font-weight:950; color:#0a0c10;
+}
+.poster-big span{color:#f3f4f6}
+.poster-orb{
+    position:absolute; width:82px; height:82px; right:-12px; top:72px;
+    border-radius:50%;
+    background:radial-gradient(circle at 30% 25%,#fff,#b7bbc5 18%,#414653 50%,#090b10 76%);
+    box-shadow:0 12px 28px rgba(0,0,0,.45),0 0 30px rgba(255,255,255,.1);
+    transform:translateZ(30px);
+}
+.poster-grid{
+    position:absolute; width:135px;height:70px; left:10px; bottom:30px;
+    opacity:.2; background:linear-gradient(rgba(255,255,255,.35) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.35) 1px,transparent 1px);
+    background-size:13px 13px; transform:skewY(-8deg);
+}
+.poster-shadow{
+    position:absolute; width:180px;height:55px; left:50%;top:78%; transform:translateX(-42%) rotate(-5deg);
+    border-radius:50%; background:rgba(0,0,0,.55); filter:blur(18px); z-index:1;
+}
+.poster-ring{
+    position:absolute; left:50%;top:50%; border:1px solid rgba(255,255,255,.2); border-radius:50%;
+    transform-style:preserve-3d; z-index:2;
+}
+.pr1{width:205px;height:70px;transform:translate(-50%,-50%) rotateX(67deg) rotateZ(-18deg);animation:posterOrbit 8s linear infinite}
+.pr2{width:150px;height:150px;transform:translate(-50%,-50%) rotateY(68deg);border-color:rgba(255,255,255,.11);animation:posterOrbit 11s linear infinite reverse}
+.poster-chip{position:absolute;z-index:7;padding:5px 8px;border:1px solid rgba(255,255,255,.18);border-radius:99px;background:rgba(12,14,20,.8);backdrop-filter:blur(8px);font-size:6px;letter-spacing:1.5px;color:#e5e6ea;box-shadow:0 8px 20px rgba(0,0,0,.3)}
+.pc1{left:2%;top:25%;transform:rotate(-8deg)} .pc2{right:2%;bottom:20%;transform:rotate(9deg)}
+@keyframes posterFloat{0%,100%{transform:translate(-50%,-50%) rotateX(7deg) rotateY(-18deg) rotateZ(-3deg) translateY(0) translateZ(25px)}50%{transform:translate(-50%,-50%) rotateX(3deg) rotateY(-10deg) rotateZ(-1deg) translateY(-10px) translateZ(35px)}}
+@keyframes posterShine{0%,55%{transform:translateX(-130%)}75%,100%{transform:translateX(130%)}}
+@keyframes posterOrbit{to{transform:translate(-50%,-50%) rotateX(67deg) rotateZ(342deg)}}
 
-/* Future is 3D */
+/* Work layout + 3D website visual */
 .work-main{
-    min-height:430px;
+    position:relative;
+    isolation:isolate;
+}
+.work-copy{
+    position:relative;
+    z-index:5;
+    width:42%;
+}
+.work-copy p{
+    margin-top:22px;
+    max-width:270px;
+    color:#777b86;
+    font-size:11px;
+    line-height:1.65;
 }
 .future-object{
-    right:17%;
-    top:52%;
-    width:140px;
-    height:140px;
+    z-index:3;
+}
+.money-orbit{
+    z-index:1;
+    pointer-events:none;
+}
+.note{
+    z-index:4;
+}
+.attractive-website-card{
+    position:relative;
+    overflow:hidden;
+}
+.mini-3d-website{
+    position:absolute;
+    width:165px;
+    height:105px;
+    right:-10px;
+    bottom:12px;
+    transform:perspective(500px) rotateX(14deg) rotateY(-18deg) rotateZ(-2deg);
+    transform-style:preserve-3d;
+    border:1px solid rgba(255,255,255,.35);
+    border-radius:10px;
+    background:linear-gradient(145deg,#272b35,#08090d);
+    box-shadow:-12px 18px 35px rgba(0,0,0,.5),0 0 35px rgba(255,255,255,.06);
+    animation:miniWebsiteFloat 5s ease-in-out infinite;
+}
+.mini-browser-top{
+    height:17px;
+    display:flex;
+    align-items:center;
+    gap:4px;
+    padding:0 7px;
+    border-bottom:1px solid rgba(255,255,255,.12);
+    background:#191c24;
+}
+.mini-browser-top b{width:5px;height:5px;border-radius:50%;background:#8e929d}
+.mini-browser-screen{
+    position:absolute;
+    inset:17px 0 0;
+    padding:15px;
+    background:radial-gradient(circle at 75% 25%,rgba(255,255,255,.18),transparent 30%),linear-gradient(145deg,#303541,#0d0f15);
+}
+.mini-browser-screen span{
+    display:block;
+    width:65%;height:5px;border-radius:3px;background:#e8e9ed;margin-bottom:6px;
+}
+.mini-browser-screen span:nth-child(2){width:46%;opacity:.6}
+.mini-browser-screen span:nth-child(3){width:28%;opacity:.35}
+.mini-browser-screen i{
+    display:inline-block;width:31%;height:27px;margin:14px 2% 0 0;border-radius:5px;
+    background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.12);
+}
+.mini-browser-glow{
+    position:absolute;inset:-25px;z-index:-1;border-radius:50%;
+    background:radial-gradient(circle,rgba(255,255,255,.13),transparent 65%);filter:blur(10px);
+}
+@keyframes miniWebsiteFloat{
+    0%,100%{transform:perspective(500px) rotateX(14deg) rotateY(-18deg) rotateZ(-2deg) translateY(0)}
+    50%{transform:perspective(500px) rotateX(10deg) rotateY(-12deg) rotateZ(-1deg) translateY(-9px)}
+}
+
+/* Future is 3D — simple centered money cube */
+.work-main{min-height:430px;position:relative;perspective:1200px;overflow:hidden}
+.future-object{
+    left:auto; right:6%; top:56%;
+    width:140px;height:140px;
+    z-index:7;
+    transform:translate(-50%,-50%);
+    transform-style:preserve-3d;
+    animation:futureCubeSpin 12s linear infinite;
 }
 .future-object .face{
     width:140px;height:140px;
+    background:linear-gradient(145deg,rgba(255,255,255,.10),rgba(255,255,255,.015));
+    box-shadow:inset 0 0 35px rgba(255,255,255,.035);
 }
 .future-object .front{transform:translateZ(70px)}
 .future-object .back{transform:rotateY(180deg) translateZ(70px)}
@@ -1232,39 +1339,36 @@ body{
 .future-object .left{transform:rotateY(-90deg) translateZ(70px)}
 .future-object .top{transform:rotateX(90deg) translateZ(70px)}
 .future-object .bottom{transform:rotateX(-90deg) translateZ(70px)}
+@keyframes futureCubeSpin{
+    from{transform:translate(-50%,-50%) rotateX(-8deg) rotateY(0deg)}
+    to{transform:translate(-50%,-50%) rotateX(-8deg) rotateY(360deg)}
+}
 .money-symbol{
-    display:grid;
-    place-items:center;
-    width:100%;
-    height:100%;
-    font-size:62px;
-    font-weight:950;
-    color:#f0f0f2;
-    text-shadow:0 7px 20px rgba(0,0,0,.5);
+    display:grid;place-items:center;width:100%;height:100%;
+    font-size:58px;font-weight:950;color:#f0f0f2;
+    text-shadow:0 7px 20px rgba(0,0,0,.65),0 0 20px rgba(255,255,255,.12)
 }
+/* Simple money particles: orbit invisibly around the centered cube. */
 .money-orbit{
-    position:absolute;
-    width:270px;height:170px;
-    right:5%;top:54%;
-    transform:translateY(-50%) rotateX(62deg) rotateZ(-8deg);
-    border:1px solid rgba(255,255,255,.18);
-    border-radius:50%;
-    animation:orbit3d 8s linear infinite;
+    position:absolute;left:auto;right:3%;top:56%;width:300px;height:190px;
+    transform:translate(-50%,-50%);z-index:8;pointer-events:none;
 }
-.note{
-    position:absolute;
-    width:34px;height:18px;
-    border-radius:3px;
-    border:1px solid rgba(255,255,255,.6);
-    background:linear-gradient(135deg,#dfe0e4,#737782);
-    color:#111217;
-    font-size:10px;font-weight:900;
-    display:grid;place-items:center;
-    box-shadow:0 7px 14px rgba(0,0,0,.4);
+.money-orbit .note{
+    position:absolute;left:50%;top:50%;
+    width:42px;height:23px;margin:-11.5px 0 0 -21px;
+    border-radius:3px;border:1px solid rgba(255,255,255,.72);
+    background:linear-gradient(135deg,#eef0e7,#8c9c82 52%,#455545);
+    color:#111217;font-size:10px;font-weight:900;display:grid;place-items:center;
+    box-shadow:0 7px 16px rgba(0,0,0,.5);
+    transform-origin:150px 0;
 }
-.note-a{left:3%;top:46%}
-.note-b{left:47%;top:-9%}
-.note-c{right:2%;bottom:10%}
+.note-a{animation:moneyCircle 5s linear infinite}
+.note-b{animation:moneyCircle 5s linear infinite -1.66s}
+.note-c{animation:moneyCircle 5s linear infinite -3.33s}
+@keyframes moneyCircle{
+    from{transform:rotate(0deg) translateX(150px) rotate(0deg)}
+    to{transform:rotate(360deg) translateX(150px) rotate(-360deg)}
+}
 
 /* Social visual */
 .mini-social-scene{
@@ -1467,7 +1571,7 @@ body{
         font-size:10px;
         line-height:1.45;
     }
-    .content-scene,.web-scene,.identity-scene{
+    .content-scene,.web-scene,.poster-scene{
         inset:27px 10px 82px;
     }
     .content-phone{
@@ -1479,6 +1583,11 @@ body{
     .web-browser{width:174px;height:108px}
     .web-orbit-1{width:205px}
     .web-orbit-2{width:190px;height:190px}
+    .poster-card-3d{width:128px;height:172px}
+    .poster-big{font-size:25px}
+    .poster-orb{width:68px;height:68px}
+    .pr1{width:175px;height:60px}
+    .pr2{width:125px;height:125px}
     .identity-core{width:75px;height:75px;font-size:36px}
     .identity-label{transform:translate(-50%,68px)}
     .r1{width:150px}
@@ -1494,21 +1603,23 @@ body{
         font-size:43px;
         letter-spacing:-3px;
     }
+    .work-copy{width:50%}
+    .work-copy p{font-size:9px;max-width:170px}
+    .mini-3d-website{width:135px;height:86px;right:-12px;bottom:9px}
+    .mini-browser-screen{padding:11px}
+    .mini-browser-screen i{margin-top:9px;height:20px}
     .work-tag{font-size:8px;letter-spacing:2px;margin-bottom:18px}
-    .future-object{
-        width:90px;height:90px;
-        right:13%;top:61%;
-    }
-    .future-object .face{width:90px;height:90px}
-    .future-object .front{transform:translateZ(45px)}
-    .future-object .back{transform:rotateY(180deg) translateZ(45px)}
-    .future-object .right{transform:rotateY(90deg) translateZ(45px)}
-    .future-object .left{transform:rotateY(-90deg) translateZ(45px)}
-    .future-object .top{transform:rotateX(90deg) translateZ(45px)}
-    .future-object .bottom{transform:rotateX(-90deg) translateZ(45px)}
+    .future-object{width:105px;height:105px;left:auto;right:3%;top:58%;transform:translate(0,-50%)}
+    .future-object .face{width:105px;height:105px}
+    .future-object .front{transform:translateZ(52.5px)}
+    .future-object .back{transform:rotateY(180deg) translateZ(52.5px)}
+    .future-object .right{transform:rotateY(90deg) translateZ(52.5px)}
+    .future-object .left{transform:rotateY(-90deg) translateZ(52.5px)}
+    .future-object .top{transform:rotateX(90deg) translateZ(52.5px)}
+    .future-object .bottom{transform:rotateX(-90deg) translateZ(52.5px)}
     .money-symbol{font-size:42px}
-    .money-orbit{width:190px;height:110px;right:0;top:64%}
-    .note{width:25px;height:13px;font-size:7px}
+    .money-orbit{width:220px;height:140px;left:auto;right:-1%;top:58%;transform:translate(0,-50%)}
+    .money-orbit .note{width:30px;height:16px;margin:-8px 0 0 -15px;font-size:7px;transform-origin:110px 0}
 
     .work-small{
         min-height:185px;
@@ -1577,6 +1688,25 @@ body{
 .hero-content{max-width:58vw;}
 @media(max-width:900px){.hero-content{max-width:90vw;}}
 
+
+/* Final Future is 3D placement: keep the money cube and orbit at the far right. */
+@media (max-width: 700px){
+    .future-object{right:3%;top:58%;}
+    .money-orbit{right:-2%;top:58%;transform:translate(0,-50%) scale(.82);}
+}
+
+/* Final Future 3D placement: cube at right-middle beside the Future is 3D text. */
+.work-main .future-object{
+    right:-2%;
+    top:50%;
+}
+@media (max-width:700px){
+    .work-main .future-object{
+        right:-5%;
+        top:50%;
+        transform:translate(0,-50%) scale(.78);
+    }
+}
 </style>
 </head>
 
@@ -1733,7 +1863,6 @@ body{
                 <div class="content-phone">
                     <div class="phone-top"></div>
                     <div class="phone-screen">
-                        <div class="reel-chip">REEL</div>
                         <div class="creator-head"></div>
                         <div class="creator-body"></div>
                         <div class="content-lines"><i></i><i></i><i></i></div>
@@ -1743,7 +1872,6 @@ body{
                 <div class="content-orbit orbit-a"></div>
                 <div class="content-orbit orbit-b"></div>
                 <span class="float-tag tag-views">+12.8K</span>
-                <span class="float-tag tag-reel">REEL</span>
                 <span class="float-dot dot-1"></span>
                 <span class="float-dot dot-2"></span>
             </div>
@@ -1794,20 +1922,26 @@ body{
 
             <div class="service-number">03 / BRAND</div>
 
-            <div class="identity-scene" aria-hidden="true">
-                <div class="identity-ring r1"></div>
-                <div class="identity-ring r2"></div>
-                <div class="identity-core">
-                    <span>A</span>
+            <div class="poster-scene" aria-hidden="true">
+                <div class="poster-shadow"></div>
+                <div class="poster-card-3d">
+                    <div class="poster-topline">AIHUSTLEUP / DESIGN</div>
+                    <div class="poster-big">MAKE<br><span>IT HIT.</span></div>
+                    <div class="poster-orb"></div>
+                    <div class="poster-grid"></div>
+                    <div class="poster-bottom">POSTER • BANNER • SOCIAL</div>
                 </div>
-                <div class="identity-label">YOUR BRAND</div>
+                <div class="poster-ring pr1"></div>
+                <div class="poster-ring pr2"></div>
+                <span class="poster-chip pc1">CREATIVE</span>
+                <span class="poster-chip pc2">+01</span>
             </div>
 
-            <h3>Creative<br>Systems</h3>
+            <h3>Poster &amp; Banner<br>Designing</h3>
 
             <p>
-                Visual identity, campaigns and digital assets
-                that make your brand feel consistent everywhere.
+                Scroll-stopping posters and banners designed
+                to make your brand stand out everywhere.
             </p>
 
         </article>
@@ -1828,8 +1962,8 @@ body{
     </div>
 
     <h2 class="section-title">
-        MADE TO<br>
-        <span class="gray">MOVE.</span>
+        BUILT TO<br>
+        <span class="gray">STAND OUT.</span>
     </h2>
 
 
@@ -1841,11 +1975,14 @@ body{
                 01 — DIGITAL EXPERIENCE
             </div>
 
-            <h3>
-                THE<br>
-                FUTURE<br>
-                <span class="gray">IS 3D.</span>
-            </h3>
+            <div class="work-copy">
+                <h3>
+                    THE<br>
+                    FUTURE<br>
+                    <span class="gray">IS 3D.</span>
+                </h3>
+                <p>3D visuals, motion and bold digital experiences built to make your brand memorable.</p>
+            </div>
 
 
             <div class="big-cube future-object" aria-hidden="true">
@@ -1859,11 +1996,7 @@ body{
 
             </div>
 
-            <div class="money-orbit" aria-hidden="true">
-                <span class="note note-a">$</span>
-                <span class="note note-b">₹</span>
-                <span class="note note-c">$</span>
-            </div>
+            
 
         </div>
 
@@ -1895,21 +2028,24 @@ body{
             </div>
 
 
-            <div class="work-small">
+            <div class="work-small attractive-website-card">
 
                 <div class="work-tag">
-                    03 — BRAND
+                    03 — WEB DESIGN
                 </div>
 
                 <h3>
-                    IDENTITIES<br>
-                    <span class="gray">WITH DEPTH.</span>
+                    ATTRACTIVE<br>
+                    <span class="gray">WEBSITE.</span>
                 </h3>
 
-                <div class="identity-work" aria-hidden="true">
-                    <div class="identity-work-ring"></div>
-                    <div class="identity-work-core">A</div>
-                    <span>01</span><span>02</span><span>03</span>
+                <div class="mini-3d-website" aria-hidden="true">
+                    <div class="mini-browser-top"><b></b><b></b><b></b></div>
+                    <div class="mini-browser-screen">
+                        <span></span><span></span><span></span>
+                        <i></i><i></i><i></i>
+                    </div>
+                    <div class="mini-browser-glow"></div>
                 </div>
 
             </div>
